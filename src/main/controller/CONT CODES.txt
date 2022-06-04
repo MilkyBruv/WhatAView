@@ -1,0 +1,27 @@
+[Right Buttons]
+! 0 = square
+! 1 = x
+! 2 = circle
+! 3 = triangle
+
+[Triggers]
+4 = l1
+5 = r1
+6 = l2
+7 = r2
+
+[Mid Buttons]
+! 8 = share
+! 9 = options
+12 = ps
+13 = trackpad
+
+[Joysticks]
+10 = l3
+11 = r3
+
+[Joystick Axis]
+0 = r vertical
+1 = r horizontal
+! 2 = l vertical
+! 3 = l horizontal
