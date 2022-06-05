@@ -36,6 +36,7 @@ public class Particle extends Sprite {
         this.y = -settings.TILESIZE;
         this.drawX = this.x;
         this.drawY = this.y;
+        this.setImage();
         this.width = this.image.getWidth() * settings.tileScale;
         this.height = this.image.getHeight() * settings.tileScale;
         this.scrollDiff = 0;
