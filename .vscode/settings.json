@@ -214,6 +214,7 @@
         "libs/lwjgl/lwjgl-debug.jar",
         "libs/lwjgl/lzma.jar",
         "libs/lwjgl/substance-7.2.1.jar",
-        "libs/lwjgl/trident-7.2.1.jar"
+        "libs/lwjgl/trident-7.2.1.jar",
+        "libs/json/json-20220320.jar"
     ]
 }
