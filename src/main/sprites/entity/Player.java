@@ -254,6 +254,8 @@ public class Player extends Sprite {
 
                 gp.menuManager.inMenu = false;
 
+                //TODO: previous menu, menu tree, descrease menu index?
+
             }
 
         }
