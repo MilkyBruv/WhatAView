@@ -15,6 +15,8 @@ public class ControllerData {
     private int leftInt = 3;
     private int rightInt = 3;
 
+    private int optInt = 9;
+
     // Code strings
     private String squareStr = "square";
     private String xStr = "x";
@@ -25,6 +27,8 @@ public class ControllerData {
     private String downStr = "down";
     private String leftStr = "left";
     private String rightStr = "right";
+
+    private String optStr = "options";
 
     public Hashtable<String, Integer> codes = new Hashtable<String, Integer>();
 
@@ -39,6 +43,8 @@ public class ControllerData {
         codes.put(downStr, downInt);
         codes.put(leftStr, leftInt);
         codes.put(rightStr, rightInt);
+
+        codes.put(optStr, optInt);
 
     }
     

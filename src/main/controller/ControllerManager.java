@@ -71,6 +71,10 @@ public class ControllerManager {
 
         };
 
+    }
+
+    public void createPlayers() {
+
         try {
 
             Controllers.create();
@@ -84,7 +88,7 @@ public class ControllerManager {
         Controllers.poll();
 
         for (int i = 0; i < Controllers.getControllerCount(); i++) {
-            
+
             if (Controllers.getController(i).getName().equals("Wireless Controller")) {
 
                 players.add(new Player(

@@ -35,6 +35,8 @@ public class Player extends Sprite {
 
     private boolean hasPressedX;
     private boolean hasPressedSquare;
+    private boolean hasPressedOptions;
+    private boolean hasPressedCircle;
 
     public boolean collidedTop;
     public boolean collidedBottom;
@@ -120,7 +122,9 @@ public class Player extends Sprite {
 
         this.hasShotDown = false;
         this.hasPressedX = false;
+        this.hasPressedCircle = false;
         this.hasPressedSquare = false;
+        this.hasPressedOptions = false;
 
         this.collidedTop = false;
         this.collidedBottom = false;
@@ -206,8 +210,53 @@ public class Player extends Sprite {
         this.image = this.idleImageRight;
 
         // Create Particles
-        this.landParticle = new Particle(this, "land", this.gp);
-        this.jumpParticle = new Particle(this, "jump", this.gp);
+        this.landParticle = new Particle(this, "land", gp);
+        this.jumpParticle = new Particle(this, "jump", gp);
+
+    }
+
+
+
+    public void getOptionsButtonInput() {
+
+        if (this.controller.isButtonPressed("options") && !this.hasPressedOptions) {
+
+            if (this.playerNum == 1) {
+
+                if (!gp.menuManager.inMenu) {
+
+                    gp.menuManager.inMenu = true;
+                    gp.menuManager.currentMenu = gp.menuManager.pauseMenu;
+
+                }
+
+                this.hasPressedOptions = true;
+
+            }
+
+        }
+
+        if (!this.controller.isButtonPressed("options") && this.hasPressedOptions) {
+
+            this.hasPressedOptions = false;
+
+        }
+
+    }
+
+
+
+    public void getCircleButtonInput() {
+
+        if (this.controller.isButtonPressed("circle") && !this.hasPressedCircle) {
+
+            if (gp.menuManager.inMenu) {
+
+                gp.menuManager.inMenu = false;
+
+            }
+
+        }
 
     }
 
@@ -709,7 +758,7 @@ public class Player extends Sprite {
 
     public void detectDangerousCollisions() {
 
-        for (Tile tile : this.gp.spriteManager.allDangerousTiles) {
+        for (Tile tile : gp.spriteManager.allDangerousTiles) {
 
             if (this.rect.intersects(tile.rect)) {
 

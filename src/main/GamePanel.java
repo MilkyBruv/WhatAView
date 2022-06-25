@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Spritesheet spritesheet = new Spritesheet();
     public SpriteManager spriteManager = new SpriteManager(this);
     public ScreenShake screenShake = new ScreenShake(this);
+    public MenuManager menuManager = new MenuManager(this);
 
     public GamePanel() {
 
@@ -84,19 +85,31 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 
+    public void updateSprites() {
+
+        if (!menuManager.inMenu) {
+
+            for (Tile tile : spriteManager.allTiles) {
+
+                tile.update();
+
+            }
+
+            for (Player player : controllerManager.players) {
+
+                player.update();
+
+            }
+
+        }
+
+    }
+
+
+
     public void update() {
 
-        for (Tile tile : spriteManager.allTiles) {
-
-            tile.update();
-
-        }
-
-        for (Player player : controllerManager.players) {
-
-            player.update();
-
-        }
+        updateSprites();
 
     }
 
@@ -109,6 +122,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
+
+        
         
         for (Tile sprite : spriteManager.allTiles) {
             
@@ -146,7 +161,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         spritesheet.drawText(g2, "Players: " + controllerManager.playerCount, 0, 0, new String[] {"center", "top"});
 
-        
+        String charPressedStr = Character.toString(keyHandler.charPressed);
+
+        menuManager.draw(g2);
+
+
         g2.dispose();
 
     }
