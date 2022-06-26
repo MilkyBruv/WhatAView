@@ -223,10 +223,9 @@ public class Player extends Sprite {
 
             if (this.playerNum == 1) {
 
-                if (!gp.menuManager.inMenu) {
+                if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
 
                     gp.menuManager.inMenu = true;
-                    gp.menuManager.currentMenu = gp.menuManager.pauseMenu;
 
                 }
 
@@ -254,7 +253,11 @@ public class Player extends Sprite {
 
                 gp.menuManager.inMenu = false;
 
-                //TODO: previous menu, menu tree, descrease menu index?
+            }
+
+            if (gp.menuManager.inSubMenu) {
+
+                gp.menuManager.inMenu = true;
 
             }
 
@@ -837,76 +840,83 @@ public class Player extends Sprite {
 
 
     public void update() {
+
+        if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
         
-        // Update draw pos
-        this.applyScroll();
-        this.drawX = this.x;
-        this.drawY = this.y + this.scrollDiff;
+            // Update draw pos
+            this.applyScroll();
+            this.drawX = this.x;
+            this.drawY = this.y + this.scrollDiff;
 
-        // Controller input
-        if (!this.dead) {
+            // Controller input
+            if (!this.dead) {
 
-            this.getContInputY();
-            this.getContInputX();
-            this.getXButtonInput();
-            this.getTriangleButtonInput();
-            this.getSquareButtonInput();
-            this.detectRopeCollisions();
-            this.moveOnRope();
-            this.detectRopeJump();
-            this.detectDangerousCollisions();
-
-        }
-
-        // Images
-        this.setIndividualImages();
-
-        // Update other instances / classes
-        this.updateProjectiles();
-        this.updateParticles();
-        this.gp.screenShake.update();
-
-        // Apply gravity & speed
-        if (!this.dead) {
-
-            if (!this.onRope) {
-
-                this.speedY += this.gravity;
-                this.y += this.speedY + this.gravity / 2;
+                this.getContInputY();
+                this.getContInputX();
+                this.getXButtonInput();
+                this.getTriangleButtonInput();
+                this.getSquareButtonInput();
+                this.detectRopeCollisions();
+                this.moveOnRope();
+                this.detectRopeJump();
+                this.detectDangerousCollisions();
 
             }
 
-            if (this.onRope) {
-                
-                this.y += this.speedY;
+            // Images
+            this.setIndividualImages();
+
+            // Update other instances / classes
+            this.updateProjectiles();
+            this.updateParticles();
+            this.gp.screenShake.update();
+
+            // Apply gravity & speed
+            if (!this.dead) {
+
+                if (!this.onRope) {
+
+                    this.speedY += this.gravity;
+                    this.y += this.speedY + this.gravity / 2;
+
+                }
+
+                if (this.onRope) {
+                    
+                    this.y += this.speedY;
+
+                }
+
+                this.x += this.speedX;
+
+            
+
+                //      Collisions
+                // Main rect
+                this.rect.x = this.x + 1;
+                this.rect.width = settings.TILESIZE - 2;
+
+                this.detectCollisions("x");
+
+                // Main rect
+                this.rect.y = this.y + 1;
+                this.rect.height = settings.TILESIZE - 2;
+
+                // Platform rect
+                this.platformRect.x = this.x;
+                this.platformRect.y = this.y + settings.TILESIZE;
+                this.platformRect.width = settings.TILESIZE;
+                this.platformRect.height = settings.TILESIZE / 4;
+
+                this.detectCollisions("y");
+                this.detectPlatformCollisions();
 
             }
 
-            this.x += this.speedX;
-
-        
-
-            //      Collisions
-            // Main rect
-            this.rect.x = this.x + 1;
-            this.rect.width = settings.TILESIZE - 2;
-
-            this.detectCollisions("x");
-
-            // Main rect
-            this.rect.y = this.y + 1;
-            this.rect.height = settings.TILESIZE - 2;
-
-            // Platform rect
-            this.platformRect.x = this.x;
-            this.platformRect.y = this.y + settings.TILESIZE;
-            this.platformRect.width = settings.TILESIZE;
-            this.platformRect.height = settings.TILESIZE / 4;
-
-            this.detectCollisions("y");
-            this.detectPlatformCollisions();
-
         }
+
+        this.getOptionsButtonInput();
+        this.getCircleButtonInput();
 
     }
 
@@ -916,7 +926,7 @@ public class Player extends Sprite {
 
         g2.drawImage(this.image, this.drawX, this.drawY, settings.TILESIZE, settings.TILESIZE, null);
 
-        //spritesheet.drawText(g2, "P" + this.playerNum, this.drawX - settings.TILESIZE / 2, this.drawY - settings.TILESIZE, new String[] {"custom", "custom"});
+        spritesheet.drawText(g2, "P" + this.playerNum, this.drawX - settings.TILESIZE / 2, this.drawY - settings.TILESIZE, new String[] {"custom", "custom"});
 
 
         for (PlayerProjectile proj : this.projectiles) {

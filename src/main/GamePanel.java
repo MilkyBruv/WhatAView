@@ -95,11 +95,11 @@ public class GamePanel extends JPanel implements Runnable {
 
             }
 
-            for (Player player : controllerManager.players) {
+        }
 
-                player.update();
+        for (Player player : controllerManager.players) {
 
-            }
+            player.update();
 
         }
 
@@ -123,47 +123,51 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
 
+        if (!menuManager.inMenu && !menuManager.inSubMenu) {
         
-        
-        for (Tile sprite : spriteManager.allTiles) {
-            
-            if (!sprite.destroyed) {
+            for (Tile sprite : spriteManager.allTiles) {
+                
+                if (!sprite.destroyed) {
 
-                if (sprite.drawX > -settings.TILESIZE && sprite.drawX <= settings.SCREENWIDTH) {
-                    
-                    if (sprite.drawY > -settings.TILESIZE && sprite.drawY <= settings.SCREENHEIGHT) {
+                    if (sprite.drawX > -settings.TILESIZE && sprite.drawX <= settings.SCREENWIDTH) {
                         
-                        if (sprite.id.equals("66") && !sprite.destroyed) {
+                        if (sprite.drawY > -settings.TILESIZE && sprite.drawY <= settings.SCREENHEIGHT) {
+                            
+                            if (sprite.id.equals("66") && !sprite.destroyed) {
 
-                            sprite.draw(g2);
+                                sprite.draw(g2);
 
-                        }
+                            }
 
-                        if (!sprite.id.equals("66")) {
+                            if (!sprite.id.equals("66")) {
 
-                            sprite.draw(g2);
+                                sprite.draw(g2);
 
-                        }
+                            }
+                            
+                        } 
                         
-                    } 
-                    
+                    }
+
                 }
-
+                
             }
             
+            for (Player player : controllerManager.players) {
+
+                player.draw(g2);
+
+            }
+
+            spritesheet.drawText(g2, "Players: " + controllerManager.playerCount, 0, 0, new String[] {"center", "top"});
+
         }
-        
-        for (Player player : controllerManager.players) {
 
-            player.draw(g2);
+        if (menuManager.inMenu || menuManager.inSubMenu) {
+
+            menuManager.draw(g2);
 
         }
-
-        spritesheet.drawText(g2, "Players: " + controllerManager.playerCount, 0, 0, new String[] {"center", "top"});
-
-        String charPressedStr = Character.toString(keyHandler.charPressed);
-
-        menuManager.draw(g2);
 
 
         g2.dispose();

@@ -2,7 +2,6 @@ package main.sprites;
 
 import main.GamePanel;
 import main.Settings;
-import main.sprites.entity.Player;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,7 +21,7 @@ public class Menu {
     private GamePanel gp;
     private Settings settings = new Settings();
 
-    public Menu(GamePanel gp, String title, int itemCount) {
+    public Menu(GamePanel gp, String title, String[] items) {
 
         this.gp = gp;
 
@@ -37,11 +36,13 @@ public class Menu {
             {0, 0}
     
         };
-        this.items = new String[] {"", "", "", "", ""};
-        this.itemCount = itemCount;
+        this.items = items;
+        this.itemCount = this.items.length;
 
         this.getItemPositions();
         this.image = this.getImage();
+
+        System.out.println(this.title);
 
     }
 
@@ -55,7 +56,7 @@ public class Menu {
 
         for (String item : this.items) {
             
-            cx = (settings.SCREENWIDTH / 2) - (item.length() * settings.TILESIZE);
+            cx = (settings.SCREENWIDTH / 2) - ((item.length() * settings.TILESIZE) / 2);
 
             this.itemPositions[count][0] = cx;
             this.itemPositions[count][1] = cy;
@@ -83,6 +84,11 @@ public class Menu {
         BufferedImage baseDisplay = new BufferedImage(settings.SCREENWIDTH, settings.SCREENHEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
+        BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
+        int x = (settings.SCREENWIDTH / 2) - (titleTextImage.getWidth() / 2);
+        g.drawImage(titleTextImage, x, 0, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
+
+
         for (int i = 0 ; i < this.itemCount ; i++) {
 
             BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
@@ -100,11 +106,19 @@ public class Menu {
         BufferedImage baseDisplay = new BufferedImage(settings.SCREENWIDTH, settings.SCREENHEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
+        BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
+        int x = (settings.SCREENWIDTH / 2) - (titleTextImage.getWidth() / 2);
+        g.drawImage(titleTextImage, x, 0, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
+
         for (int i = 0 ; i < this.itemCount ; i++) {
 
-            BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
+            if (!this.items[i].equals("ph") && !this.items[i].equals("player")) {
 
-            g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1], textImage.getWidth(), textImage.getHeight(), null);
+                BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
+
+                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1], textImage.getWidth(), textImage.getHeight(), null);
+
+            }
 
         }
 

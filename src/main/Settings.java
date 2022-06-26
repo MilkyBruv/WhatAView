@@ -14,8 +14,8 @@ public class Settings {
 
     public final int TILEDWITDH = 32;
     public final int TILEDHEIGHT = 28;
-    public final int SCREENWIDTH = TILEDWITDH * TILESIZE;   //? 256
-    public final int SCREENHEIGHT = TILEDHEIGHT * TILESIZE; //? 224
+    public final int SCREENWIDTH = TILEDWITDH * TILESIZE;   //? 256 (base size)
+    public final int SCREENHEIGHT = TILEDHEIGHT * TILESIZE; //? 224 (base size)
 
     public final int SCROLLWAIT = 300000000 / 4 * 3;
     public float SCROLLSPEED = tileScale;

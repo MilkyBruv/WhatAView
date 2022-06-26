@@ -11,7 +11,8 @@ public class MenuManager {
     private Spritesheet ss;
 
     public Menu currentMenu;
-    public boolean inMenu = true;
+    public boolean inMenu = false;
+    public boolean inSubMenu = false;
 
     public Menu optionsMenu;
     public Menu startMenu;
@@ -24,22 +25,15 @@ public class MenuManager {
         this.gp = gp;
         this.ss = gp.spritesheet;
 
-        this.optionsMenu = new Menu(gp, "options", 1);
-        this.optionsMenu.items[0] = "volume";
-        this.optionsMenu.items[1] = "fps";
+        this.optionsMenu = new Menu(gp, "options", new String[] {"volume", "fps"});
 
-        this.startMenu = new Menu(gp, "start", 1);
-        this.startMenu.items[0] = "play";
-        this.startMenu.items[1] = "exit";
+        this.startMenu = new Menu(gp, "start", new String[] {"player", "exit"});
 
-        this.endMenu = new Menu(gp, "end", 1);
-        this.endMenu.items[0] = "play again";
-        this.endMenu.items[1] = "exit";
+        this.endMenu = new Menu(gp, "end", new String[] {"player again", "exit"});
 
-        this.pauseMenu = new Menu(gp, "paused", 2);
-        this.pauseMenu.items[0] = "resume";
-        this.pauseMenu.items[1] = "restart";
-        this.pauseMenu.items[2] = "exit";
+        this.pauseMenu = new Menu(gp, "paused", new String[] {"resume", "restart", "exit"});
+
+        this.currentMenu = this.startMenu;
 
     }
 
@@ -55,7 +49,7 @@ public class MenuManager {
 
     public void draw(Graphics2D g2) {
 
-        //TODO: Draw current menu image
+        g2.drawImage(this.currentMenu.image, 0, 0, this.currentMenu.image.getWidth(), this.currentMenu.image.getHeight(), null);
 
     }
 

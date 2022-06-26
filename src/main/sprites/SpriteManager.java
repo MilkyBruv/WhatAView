@@ -477,6 +477,8 @@ public class SpriteManager {
 
     public void parseMapData() {
 
+        gp.controllerManager.createPlayers();
+
         for (int y = 0; y < mapHeight; y++) {
             
             for (int x = 0; x < settings.TILEDWITDH; x++) {
@@ -503,7 +505,7 @@ public class SpriteManager {
 
             }
 
-       }
+        }
 
     }
 
