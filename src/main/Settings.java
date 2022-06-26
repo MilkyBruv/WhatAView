@@ -3,7 +3,7 @@ package main;
 public class Settings {
 
     // File settings
-    public final String baseDir = "D:/code/java/awt_stuff/platformer/src/";
+    public final String baseDir = System.getProperty("user.dir");
 
     // Screen settings
     public final int FPS = 60;

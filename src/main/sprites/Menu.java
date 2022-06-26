@@ -85,17 +85,27 @@ public class Menu {
         Graphics g = baseDisplay.getGraphics();
 
         BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
+        
         int x = (settings.SCREENWIDTH / 2) - (titleTextImage.getWidth() / 2);
-        g.drawImage(titleTextImage, x, 0, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
+        int yc = 6;
+        
+        g.drawImage(titleTextImage, x, yc * settings.TILESIZE, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
 
+        yc = 8;
 
         for (int i = 0 ; i < this.itemCount ; i++) {
 
-            BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
+            if (!this.items[i].equals("ph") && !this.items[i].equals("player")) {
 
-            g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1], textImage.getWidth(), textImage.getHeight(), null);
+                BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
+
+                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + (yc * settings.TILESIZE), textImage.getWidth(), textImage.getHeight(), null);
+
+            }
 
         }
+
+        this.image = baseDisplay;
 
     }
 
@@ -107,8 +117,13 @@ public class Menu {
         Graphics g = baseDisplay.getGraphics();
 
         BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
+        
         int x = (settings.SCREENWIDTH / 2) - (titleTextImage.getWidth() / 2);
-        g.drawImage(titleTextImage, x, 0, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
+        int yc = 6;
+        
+        g.drawImage(titleTextImage, x, yc * settings.TILESIZE, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
+
+        yc = 8;
 
         for (int i = 0 ; i < this.itemCount ; i++) {
 
@@ -116,7 +131,7 @@ public class Menu {
 
                 BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
 
-                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1], textImage.getWidth(), textImage.getHeight(), null);
+                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + (yc * settings.TILESIZE), textImage.getWidth(), textImage.getHeight(), null);
 
             }
 
