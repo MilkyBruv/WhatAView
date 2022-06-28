@@ -17,8 +17,6 @@ public class KeyHandler implements KeyListener {
 
     }
 
-    // TODO: Use lwjgl for keyboard input 
-
     public void onKeyPressed(char c) {
 
     }
@@ -37,48 +35,48 @@ public class KeyHandler implements KeyListener {
 
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED) {
 
-            this.charPressed = e.getKeyChar();
-            this.prevCharPressed = this.charPressed;
+            charPressed = e.getKeyChar();
+            prevCharPressed = charPressed;
 
         } else {
 
-            this.charPressed = this.prevCharPressed;
+            charPressed = prevCharPressed;
 
         }
 
         if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
 
-            this.upPressed = true;
+            upPressed = true;
 
         }
 
         if (code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S) {
 
-            this.downPressed = true;
+            downPressed = true;
 
         }
 
         if (code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A) {
 
-            this.leftPressed = true;
+            leftPressed = true;
 
         }
 
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
 
-            this.rightPressed = true;
+            rightPressed = true;
 
         }
 
-        if (code == KeyEvent.VK_X || code == KeyEvent.VK_M) {
+        if (code == KeyEvent.VK_X || code == KeyEvent.VK_N) {
 
-            this.shootPressed = true;
+            shootPressed = true;
 
         }
 
-        if (code == KeyEvent.VK_Z || code == KeyEvent.VK_N) {
+        if (code == KeyEvent.VK_C || code == KeyEvent.VK_M) {
 
-            this.jumpPressed = true;
+            jumpPressed = true;
 
         }
         
@@ -91,37 +89,37 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
 
-            this.upPressed = false;
+            upPressed = false;
 
         }
 
         if (code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S) {
 
-            this.downPressed = false;
+            downPressed = false;
 
         }
 
         if (code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A) {
 
-            this.leftPressed = false;
+            leftPressed = false;
 
         }
 
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
 
-            this.rightPressed = false;
+            rightPressed = false;
 
         }
 
-        if (code == KeyEvent.VK_X || code == KeyEvent.VK_M) {
+        if (code == KeyEvent.VK_X || code == KeyEvent.VK_N) {
 
-            this.shootPressed = false;
+            shootPressed = false;
 
         }
 
-        if (code == KeyEvent.VK_Z || code == KeyEvent.VK_N) {
+        if (code == KeyEvent.VK_C || code == KeyEvent.VK_M) {
 
-            this.jumpPressed = false;
+            jumpPressed = false;
 
         }
 

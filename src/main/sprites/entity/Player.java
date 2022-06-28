@@ -38,6 +38,8 @@ public class Player extends Sprite {
     private boolean hasPressedOptions;
     private boolean hasPressedCircle;
 
+    private boolean hasMovedContY;
+
     public boolean collidedTop;
     public boolean collidedBottom;
     public boolean collidedLeft;
@@ -125,6 +127,8 @@ public class Player extends Sprite {
         this.hasPressedCircle = false;
         this.hasPressedSquare = false;
         this.hasPressedOptions = false;
+
+        this.hasMovedContY = false;
 
         this.collidedTop = false;
         this.collidedBottom = false;
@@ -217,6 +221,192 @@ public class Player extends Sprite {
 
 
 
+    public void getKeyboardInputX() {
+
+        int pos = this.rect.x;
+
+        if (gp.keyHandler.leftPressed) {
+
+            if (!this.collidedLeft) {
+
+                this.speedX = -this.speed;
+
+            }
+
+            this.facingUp = false;
+            this.facingDown = false;
+            this.facingLeft = true;
+            this.facingRight = false;
+            this.lastXDir = "left";
+
+            this.idle = false;
+
+            // Animate player if on ground
+            if (this.onGround && !this.isShooting) {
+
+                int frame = (Math.round(pos / 50f)) % this.runningImagesLeft.length;
+                this.image = this.runningImagesLeft[frame];
+
+            }
+
+        } else if (gp.keyHandler.rightPressed) {
+
+            if (!this.collidedRight) {
+
+                this.speedX = this.speed;
+
+            }
+
+            this.facingUp = false;
+            this.facingDown = false;
+            this.facingLeft = false;
+            this.facingRight = true;
+            this.lastXDir = "right";
+
+            this.idle = false;
+
+            // Animate player if on ground
+            if (this.onGround && !this.isShooting) {
+
+                int frame = (Math.round(pos / 50f)) % this.runningImagesRight.length;
+                this.image = this.runningImagesRight[frame];
+
+            }
+
+        }
+
+        if (!gp.keyHandler.leftPressed && !gp.keyHandler.rightPressed) {
+
+            this.speedX = 0;
+            this.idle = true;
+
+            if (this.lastXDir.equals("left") && this.onGround) {
+
+                this.image = this.idleImageLeft;
+
+            }
+
+            if (this.lastXDir.equals("right") && this.onGround) {
+
+                this.image = this.idleImageRight;
+
+            }
+
+        }
+
+    }
+
+
+
+    public void getKeyboardInputY() {
+
+        if (gp.keyHandler.upPressed) {
+
+            this.facingUp = true;
+            this.facingDown = false;
+            this.facingLeft = false;
+            this.facingRight = false;
+
+        } else if (gp.keyHandler.downPressed) {
+
+            this.facingUp = false;
+            this.facingDown = true;
+            this.facingLeft = false;
+            this.facingRight = false;
+
+            this.collidesWithPlatforms = false;
+
+        }
+
+        if (!gp.keyHandler.downPressed) {
+
+            this.collidesWithPlatforms = true;
+
+        }
+
+    }
+
+
+
+    public void getKeyboardInputShoot() {
+
+        if (gp.keyHandler.shootPressed && !this.hasPressedSquare) {
+
+            this.isShooting = true;
+
+            if (this.facingDown) {
+
+                if (!this.hasShotDown && !this.onGround) { 
+                    
+                    this.speedY = -this.doubleJump;
+                    this.createProjectile();
+
+                }
+
+                this.hasShotDown = true;
+                this.gp.screenShake.shake();
+
+            } if (!this.facingDown) {
+
+                this.createProjectile();
+                this.gp.screenShake.shake();
+
+            }
+
+            this.hasPressedSquare = true;
+
+        }
+
+        if (!gp.keyHandler.shootPressed && this.hasPressedSquare) {
+
+            this.isShooting = false;
+            this.hasPressedSquare = false;
+
+        }
+
+    }
+
+
+
+    public void getKeyboardInputJump() {
+
+        if (gp.keyHandler.jumpPressed && !this.hasPressedX) {
+
+            if (this.onGround) {
+
+                this.speedY = -this.jump;
+                this.onGround = false;
+                this.hasPressedX = true;
+
+                this.jumpParticle.create();
+
+            }
+
+            else if (!this.hasShotDown && !this.onGround && !this.onRope) { 
+                    
+                this.speedY = -this.doubleJump;
+                this.facingUp = false;
+                this.facingDown = true;
+                this.facingLeft = false;
+                this.facingRight = false;
+                this.createProjectile();
+                this.hasShotDown = true;
+                this.gp.screenShake.shake();
+
+            }
+
+        }
+
+        if (!gp.keyHandler.jumpPressed && this.hasPressedX) {
+
+            this.hasPressedX = false;
+
+        }
+
+    }
+
+
+
     public void getOptionsButtonInput() {
 
         if (this.controller.isButtonPressed("options") && !this.hasPressedOptions) {
@@ -226,6 +416,7 @@ public class Player extends Sprite {
                 if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
 
                     gp.menuManager.inMenu = true;
+                    gp.menuManager.currentMenu = gp.menuManager.pauseMenu;
 
                 }
 
@@ -428,6 +619,52 @@ public class Player extends Sprite {
                 this.image = this.idleImageRight;
 
             }
+
+        }
+
+    }
+
+
+
+    public void getContInputYOptions() {
+
+        if (this.controller.isAxisMoved("down") && !this.hasMovedContY) {
+
+            if (gp.menuManager.currentMenu.currentSelection < gp.menuManager.currentMenu.itemCount - 1) {
+
+                gp.menuManager.currentMenu.currentSelection++;
+
+            }
+
+            if (gp.menuManager.currentMenu.currentSelection == 0) {
+
+                gp.menuManager.currentMenu.currentSelection = gp.menuManager.currentMenu.itemCount - 1;
+
+            }
+
+            this.hasMovedContY = true;
+
+        } else if (this.controller.isAxisMoved("up") && !this.hasMovedContY) {
+
+            if (gp.menuManager.currentMenu.currentSelection > 0) {
+
+                gp.menuManager.currentMenu.currentSelection--;
+
+            }
+
+            if (gp.menuManager.currentMenu.currentSelection == gp.menuManager.currentMenu.itemCount - 1) {
+
+                gp.menuManager.currentMenu.currentSelection = 0;
+
+            }
+
+            this.hasMovedContY = true;
+
+        }
+
+        if (!this.controller.isAxisMoved("down") && !this.controller.isAxisMoved("up") && this.hasMovedContY) {
+
+            this.hasMovedContY = false;
 
         }
 
@@ -666,22 +903,51 @@ public class Player extends Sprite {
 
         if (this.onRope) {
 
-            if (this.controller.isButtonPressed("x")) {
+            if (gp.PLAYMODE.equals("c")) {
 
-                this.collidesWithRopes = false;
-                this.onRope = false;
+                if (this.controller.isButtonPressed("x")) {
 
-                if (this.lastXDir.equals("left")) {
+                    this.collidesWithRopes = false;
+                    this.onRope = false;
 
-                    this.speedY = -this.jump;
-                    this.speedX = -this.speed;
+                    if (this.lastXDir.equals("left")) {
+
+                        this.speedY = -this.jump;
+                        this.speedX = -this.speed;
+
+                    }
+
+                    if (this.lastXDir.equals("right")) {
+
+                        this.speedY = -this.jump;
+                        this.speedX = this.speed;
+
+                    }
 
                 }
 
-                if (this.lastXDir.equals("right")) {
+            }
 
-                    this.speedY = -this.jump;
-                    this.speedX = this.speed;
+            if (gp.PLAYMODE.equals("k")) {
+
+                if (gp.keyHandler.jumpPressed) {
+
+                    this.collidesWithRopes = false;
+                    this.onRope = false;
+
+                    if (gp.keyHandler.leftPressed) {
+
+                        this.speedY = -this.jump;
+                        this.speedX = -this.speed;
+
+                    }
+
+                    if (gp.keyHandler.rightPressed) {
+
+                        this.speedY = -this.jump;
+                        this.speedX = this.speed;
+
+                    }
 
                 }
 
@@ -736,22 +1002,49 @@ public class Player extends Sprite {
 
         if (this.onRope) {
 
-            if (this.controller.isAxisMoved("up")) {
+            if (gp.PLAYMODE.equals("c")) {
 
-                this.x = this.ropeRectX;
-                this.speedY = -this.speed / 2;
+                if (this.controller.isAxisMoved("up")) {
 
-            } if (this.controller.isAxisMoved("down")) {
+                    this.x = this.ropeRectX;
+                    this.speedY = -this.speed / 2;
 
-                this.x = this.ropeRectX;
-                this.speedY = this.speed / 2;
+                } if (this.controller.isAxisMoved("down")) {
+
+                    this.x = this.ropeRectX;
+                    this.speedY = this.speed / 2;
+
+                }
+
+                if (!this.controller.isAxisMoved("up") && !this.controller.isAxisMoved("down")) {
+
+                    this.x = this.ropeRectX;
+                    this.speedY = 0;
+
+                }
 
             }
 
-            if (!this.controller.isAxisMoved("up") && !this.controller.isAxisMoved("down")) {
+            if (gp.PLAYMODE.equals("k")) {
 
-                this.x = this.ropeRectX;
-                this.speedY = 0;
+                if (gp.keyHandler.upPressed) {
+
+                    this.x = this.ropeRectX;
+                    this.speedY = -this.speed / 2;
+
+                } if (gp.keyHandler.downPressed) {
+
+                    this.x = this.ropeRectX;
+                    this.speedY = this.speed / 2;
+
+                }
+
+                if (!gp.keyHandler.upPressed && !gp.keyHandler.downPressed) {
+
+                    this.x = this.ropeRectX;
+                    this.speedY = 0;
+
+                }
 
             }
 
@@ -851,11 +1144,25 @@ public class Player extends Sprite {
             // Controller input
             if (!this.dead) {
 
-                this.getContInputY();
-                this.getContInputX();
-                this.getXButtonInput();
-                this.getTriangleButtonInput();
-                this.getSquareButtonInput();
+                if (gp.PLAYMODE.equals("c")) {
+
+                    this.getContInputY();
+                    this.getContInputX();
+                    this.getXButtonInput();
+                    this.getTriangleButtonInput();
+                    this.getSquareButtonInput();
+
+                }
+
+                if (gp.PLAYMODE.equals("k")) {
+
+                    this.getKeyboardInputX();
+                    this.getKeyboardInputY();
+                    this.getKeyboardInputShoot();
+                    this.getKeyboardInputJump();
+
+                }
+
                 this.detectRopeCollisions();
                 this.moveOnRope();
                 this.detectRopeJump();
@@ -915,8 +1222,18 @@ public class Player extends Sprite {
 
         }
 
-        this.getOptionsButtonInput();
-        this.getCircleButtonInput();
+        if (gp.PLAYMODE.equals("c")) {
+
+            this.getOptionsButtonInput();
+            this.getCircleButtonInput();
+
+            if (gp.menuManager.inMenu || gp.menuManager.inSubMenu) {
+
+                this.getContInputYOptions();
+
+            }
+
+        }
 
     }
 
@@ -926,8 +1243,11 @@ public class Player extends Sprite {
 
         g2.drawImage(this.image, this.drawX, this.drawY, settings.TILESIZE, settings.TILESIZE, null);
 
-        spritesheet.drawText(g2, "P" + this.playerNum, this.drawX - settings.TILESIZE / 2, this.drawY - settings.TILESIZE, new String[] {"custom", "custom"});
+        if (gp.controllerManager.playerCount == 2) {
 
+            spritesheet.drawTextNoBG(g2, "P" + this.playerNum, this.drawX - settings.TILESIZE / 2, this.drawY - settings.TILESIZE, new String[] {"custom", "custom"});
+
+        }
 
         for (PlayerProjectile proj : this.projectiles) {
 

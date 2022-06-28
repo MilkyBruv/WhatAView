@@ -19,10 +19,11 @@ public class GamePanel extends JPanel implements Runnable {
     // Init classes
     private Settings settings = new Settings();
     BufferedImage testImage;
+    public String PLAYMODE = "k"; // k = keyboard | c = controller
     public float scrollWait = settings.SCROLLWAIT;
     String line;
     Thread gameThread;
-    KeyHandler keyHandler = new KeyHandler(this);
+    public KeyHandler keyHandler = new KeyHandler(this);
     public ControllerManager controllerManager = new ControllerManager(this);
     public Spritesheet spritesheet = new Spritesheet();
     public SpriteManager spriteManager = new SpriteManager(this);
@@ -100,6 +101,12 @@ public class GamePanel extends JPanel implements Runnable {
         for (Player player : controllerManager.players) {
 
             player.update();
+
+        }
+
+        if (menuManager.inMenu || menuManager.inSubMenu) {
+
+            menuManager.update();
 
         }
 

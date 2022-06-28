@@ -5,7 +5,6 @@ import java.awt.image.RasterFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -207,6 +206,117 @@ public class Spritesheet {
     public void drawText(Graphics2D g2, String text, int x, int y, String[] pos) {
 
         BufferedImage textImage = getText(text);
+        int xDes = 0;
+        int yDes = 0;
+
+        // #region X
+
+        if (pos[0].equals("left")) {
+
+            xDes = 0 + x;
+
+        }
+
+        if (pos[0].equals("right")) {
+
+            xDes = (settings.SCREENWIDTH - text.length() * settings.TILESIZE) + x;
+
+        }
+
+        if (pos[0].equals("center")) {
+
+            xDes = ((settings.SCREENWIDTH - text.length() * settings.TILESIZE) / 2) + x;
+
+        }
+
+        if (pos[0].equals("custom")) {
+
+            xDes = x;
+
+        }
+
+        // #endregion
+
+        // #region Y
+
+        if (pos[1].equals("top")) {
+
+            yDes = 0 + y;
+
+        }
+
+        if (pos[1].equals("bottom")) {
+
+            yDes = settings.SCREENHEIGHT - settings.TILESIZE + y;
+
+        }
+
+        if (pos[1].equals("center")) {
+
+            yDes = 13 * settings.TILESIZE + y;
+
+        }
+
+        if (pos[1].equals("custom")) {
+
+            yDes = y;
+
+        }
+
+        // #endregion
+
+        g2.drawImage(textImage, xDes, yDes, textImage.getWidth(), textImage.getHeight(), null);
+
+    }
+
+
+
+    public BufferedImage getTextNoBG(String _text) {
+
+        String text = _text.toLowerCase();
+        String fitText;
+        
+        // Limit characters in string to 32 (32 tiles wide)
+        if (text.length() > settings.TILEDWITDH) {
+            
+            fitText = text.substring(0, settings.TILEDWITDH - 1);
+            
+        } else {
+            
+            fitText = text;
+            
+        }
+        
+        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILESIZE, settings.TILESIZE, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = baseDisplay.getGraphics();
+
+        for (int i = 0 ; i < fitText.length() ; i++) {
+
+            // Get nums as seperate strings
+            String[] tileData = charsDict.get(Character.toString(fitText.charAt(i))).split(", ");
+
+            // Convert strings to int[]
+            int[] tileCoords = {
+
+                Integer.parseInt(tileData[0]),
+                Integer.parseInt(tileData[1])
+
+            };
+
+            BufferedImage charImage = getSubImage(tileCoords[0] * 8, tileCoords[1] * 8, 8, 8);
+            g.drawImage(charImage, i * settings.TILESIZE, 0, settings.TILESIZE, settings.TILESIZE, null);
+
+        }
+
+        return baseDisplay;
+
+    }
+
+
+
+    public void drawTextNoBG(Graphics2D g2, String text, int x, int y, String[] pos) {
+
+        BufferedImage textImage = getTextNoBG(text);
         int xDes = 0;
         int yDes = 0;
 

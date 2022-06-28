@@ -27,11 +27,11 @@ public class MenuManager {
 
         this.optionsMenu = new Menu(gp, "options", new String[] {"volume", "fps"});
 
-        this.startMenu = new Menu(gp, "start", new String[] {"player", "exit"});
+        this.startMenu = new Menu(gp, "start", new String[] {"play", "exit"});
 
-        this.endMenu = new Menu(gp, "end", new String[] {"player again", "exit"});
+        this.endMenu = new Menu(gp, "end", new String[] {"play again", "exit"});
 
-        this.pauseMenu = new Menu(gp, "paused", new String[] {"resume", "restart", "exit"});
+        this.pauseMenu = new Menu(gp, "[paused]", new String[] {"resume", "restart", "exit", "poo", "mega poopoo"});
 
         this.currentMenu = this.startMenu;
 
@@ -41,7 +41,9 @@ public class MenuManager {
 
     public void update() {
 
-        //TODO: Update all menus (create method in Menu class)
+        this.currentMenu.setItemSelection();
+        this.currentMenu.getItemPositions();
+        this.currentMenu.setImage();
 
     }
 

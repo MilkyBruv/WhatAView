@@ -1,16 +1,26 @@
 package main.controller;
 
 import org.lwjgl.input.Controllers;
+
+import main.GamePanel;
+
 import org.lwjgl.input.Controller;
 
 public class PlayerController {
     
     private Controller controller;
     private ControllerData controllerData = new ControllerData();
+    private GamePanel gp;
 
-    public PlayerController(int contNum) {
+    public PlayerController(int contNum, GamePanel gp) {
 
-        this.controller = Controllers.getController(contNum);
+        this.gp = gp;
+
+        if (gp.PLAYMODE.equals("c")) {
+
+            this.controller = Controllers.getController(contNum);
+
+        }
 
     }
 

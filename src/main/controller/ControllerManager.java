@@ -16,6 +16,7 @@ public class ControllerManager {
 
     public List<Player> players = new ArrayList<Player>() {};
     public int playerCount = 0;
+    public int maxPlayers = 0;
 
     private Spritesheet spritesheet = new Spritesheet();
     
@@ -75,41 +76,66 @@ public class ControllerManager {
 
     public void createPlayers() {
 
-        try {
+        if (gp.PLAYMODE.equals("c")) {
 
-            Controllers.create();
+            maxPlayers = 2;
 
-        } catch (LWJGLException e) {
+            try {
 
-            e.printStackTrace();
+                Controllers.create();
 
-        }
+            } catch (LWJGLException e) {
 
-        Controllers.poll();
-
-        for (int i = 0; i < Controllers.getControllerCount(); i++) {
-
-            if (Controllers.getController(i).getName().equals("Wireless Controller")) {
-
-                players.add(new Player(
-
-                    100, 
-                    100, 
-                    playerProjectileImages[playerCount], 
-                    new PlayerController(i), 
-                    playerCount + 1, 
-                    gp
-
-                ));
-                
-                playerCount++;
+                e.printStackTrace();
 
             }
 
+            Controllers.poll();
+
+            for (int i = 0; i < Controllers.getControllerCount(); i++) {
+
+                if (Controllers.getController(i).getName().equals("Wireless Controller") && playerCount <= maxPlayers) {
+
+                    players.add(new Player(
+
+                        100, 
+                        100, 
+                        playerProjectileImages[playerCount], 
+                        new PlayerController(i, gp), 
+                        playerCount + 1, 
+                        gp
+
+                    ));
+                    
+                    playerCount++;
+
+                }
+
+            }
+
+            playerCount = players.size();
+            
         }
 
-        playerCount = players.size();
-        
+        if (gp.PLAYMODE.equals("k")) {
+
+            maxPlayers = 1;
+
+            players.add(new Player(
+
+                100, 
+                100, 
+                playerProjectileImages[playerCount], 
+                new PlayerController(0, gp), 
+                playerCount + 1, 
+                gp
+
+            ));
+            
+            playerCount++;
+
+        }
+
     }
 
 }
