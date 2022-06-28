@@ -1,4 +1,4 @@
-package main.sprites;
+package main.menu;
 
 import main.GamePanel;
 import main.Settings;
@@ -18,32 +18,12 @@ public class Menu {
 
     public BufferedImage image;
 
-    private GamePanel gp;
+    public GamePanel gp;
     private Settings settings = new Settings();
 
-    public Menu(GamePanel gp, String title, String[] items) {
+    public Menu(GamePanel gp) {
 
         this.gp = gp;
-
-        this.title = title;
-        this.itemPositions = new int[][] {
-
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0}
-    
-        };
-        this.items = items;
-        this.itemCount = this.items.length;
-        this.selectedItem = 0;
-
-        this.getItemPositions();
-        this.image = this.getImage();
-
-        System.out.println(this.title);
 
     }
 
@@ -165,5 +145,53 @@ public class Menu {
         return baseDisplay;
 
     }
+
+
+
+    public void excecuteItem() {
+
+        if (this.currentSelection == 0) {
+
+            this.item1();
+
+        }
+
+        if (this.currentSelection == 1) {
+
+            this.item2();
+
+        }
+
+        if (this.currentSelection == 2) {
+
+            this.item3();
+
+        }
+
+        if (this.currentSelection == 3) {
+
+            this.item4();
+
+        }
+
+        if (this.currentSelection == 4) {
+
+            this.item5();
+
+        }
+
+    }
+
+
+
+    public void item1() {}
+
+    public void item2() {}
+    
+    public void item3() {}
+    
+    public void item4() {}
+    
+    public void item5() {}
 
 }

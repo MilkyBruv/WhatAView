@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import main.controller.ControllerManager;
+import main.menu.MenuManager;
 import main.sprites.Tile;
 import main.sprites.SpriteManager;
 import main.sprites.Spritesheet;
@@ -19,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Init classes
     private Settings settings = new Settings();
     BufferedImage testImage;
-    public String PLAYMODE = "k"; // k = keyboard | c = controller
+    public String PLAYMODE = "c"; // k = keyboard | c = controller
     public float scrollWait = settings.SCROLLWAIT;
     String line;
     Thread gameThread;

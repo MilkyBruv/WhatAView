@@ -443,11 +443,13 @@ public class Player extends Sprite {
             if (gp.menuManager.inMenu) {
 
                 gp.menuManager.inMenu = false;
+                gp.menuManager.inSubMenu = false;
 
             }
 
             if (gp.menuManager.inSubMenu) {
 
+                gp.menuManager.inSubMenu = false;
                 gp.menuManager.inMenu = true;
 
             }
@@ -462,7 +464,7 @@ public class Player extends Sprite {
 
         if (this.controller.isButtonPressed("x") && !this.hasPressedX) {
 
-            if (this.onGround) {
+            if (this.onGround || this.onRope) {
 
                 this.speedY = -this.jump;
                 this.onGround = false;
@@ -484,6 +486,25 @@ public class Player extends Sprite {
                 this.gp.screenShake.shake();
 
             }
+
+        }
+
+        if (!this.controller.isButtonPressed("x") && this.hasPressedX) {
+
+            this.hasPressedX = false;
+
+        }
+
+    }
+
+
+
+    public void getXButtonInputOptions() {
+
+        if (this.controller.isButtonPressed("x") && !this.hasPressedX) {
+
+            gp.menuManager.currentMenu.excecuteItem();
+            this.hasPressedX = true;
 
         }
 
@@ -1230,6 +1251,7 @@ public class Player extends Sprite {
             if (gp.menuManager.inMenu || gp.menuManager.inSubMenu) {
 
                 this.getContInputYOptions();
+                this.getXButtonInputOptions();
 
             }
 

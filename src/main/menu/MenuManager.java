@@ -1,17 +1,16 @@
-package main;
+package main.menu;
 
-import main.sprites.Menu;
-import main.sprites.Spritesheet;
+import main.GamePanel;
+import main.menu.menus.*;
 
 import java.awt.Graphics2D;
 
 public class MenuManager {
     
     private GamePanel gp;
-    private Spritesheet ss;
 
     public Menu currentMenu;
-    public boolean inMenu = false;
+    public boolean inMenu = true;
     public boolean inSubMenu = false;
 
     public Menu optionsMenu;
@@ -23,15 +22,14 @@ public class MenuManager {
     public MenuManager(GamePanel gp) {
 
         this.gp = gp;
-        this.ss = gp.spritesheet;
 
-        this.optionsMenu = new Menu(gp, "options", new String[] {"volume", "fps"});
+        this.optionsMenu = new OptionsMenu(gp);
 
-        this.startMenu = new Menu(gp, "start", new String[] {"play", "exit"});
+        this.startMenu = new StartMenu(gp);
 
-        this.endMenu = new Menu(gp, "end", new String[] {"play again", "exit"});
+        this.endMenu = new EndMenu(gp);
 
-        this.pauseMenu = new Menu(gp, "[paused]", new String[] {"resume", "restart", "exit", "poo", "mega poopoo"});
+        this.pauseMenu = new PauseMenu(gp);
 
         this.currentMenu = this.startMenu;
 
