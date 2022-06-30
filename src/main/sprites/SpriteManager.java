@@ -50,37 +50,37 @@ public class SpriteManager {
 
         // #region 1st row
 
-        if (id.equals("1")) {
+        if (id.equals("15")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("2")) {
+        } if (id.equals("14")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("3")) {
+        } if (id.equals("13")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("4")) {
+        } if (id.equals("12")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("5")) {
+        } if (id.equals("11")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("6")) {
+        } if (id.equals("10")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("7")) {
+        } if (id.equals("9")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 0), this.gp);
             this.allTiles.add(newTile);
@@ -90,405 +90,515 @@ public class SpriteManager {
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("9")) {
+        } if (id.equals("7")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("10")) {
+        } if (id.equals("6")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("11")) {
+        } if (id.equals("5")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("12")) {
+        } if (id.equals("4")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("13")) {
+        } if (id.equals("3")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("14")) {
+        } if (id.equals("2")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("15")) {
+        } if (id.equals("1")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 0), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("16")) {
+        } if (id.equals("0")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 0), this.gp);
             this.allTiles.add(newTile);
 
         }
 
-        //#endregion
+        // #endregion
 
         // #region 2nd row
 
-        if (id.equals("17")) {
+        if (id.equals("1")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("18")) {
+        } if (id.equals("2")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("19")) {
+        } if (id.equals("3")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("20")) {
+        } if (id.equals("4")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("21")) {
+        } if (id.equals("5")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("22")) {
+        } if (id.equals("6")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("23")) {
+        } if (id.equals("7")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("24")) {
+        } if (id.equals("8")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("25")) {
+        } if (id.equals("9")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("26")) {
+        } if (id.equals("10")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("27")) {
+        } if (id.equals("11")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("28")) {
+        } if (id.equals("12")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("29")) {
+        } if (id.equals("13")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("30")) {
+        } if (id.equals("14")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("31")) {
+        } if (id.equals("15")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 1), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("32")) {
+        } if (id.equals("16")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 1), this.gp);
             this.allTiles.add(newTile);
 
         }
 
-        //#endregion
+        // #endregion
 
         // #region 3rd row
 
-        if (id.equals("33")) {
+        if (id.equals("17")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 2), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("34")) {
+        } if (id.equals("18")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 2), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("35")) {
+        } if (id.equals("19")) {
 
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(2, 2), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("36")) {
-
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(3, 2), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 2), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("37")) {
+        } if (id.equals("20")) {
 
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(4, 2), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("38")) {
-
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(5, 2), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 2), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("39")) {
+        } if (id.equals("21")) {
 
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(6, 2), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("40")) {
-
-            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(6, 2), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 2), this.gp);
             this.allTiles.add(newTile);
 
-        } if (id.equals("41")) {
+        } if (id.equals("22")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(25, 2), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("42")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(26, 2), this.gp);
+
+        } if (id.equals("23")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("43")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(27, 2), this.gp);
+
+        } if (id.equals("24")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("44")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(28, 2), this.gp);
+
+        } if (id.equals("25")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("45")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(29, 2), this.gp);
+
+        } if (id.equals("26")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("46")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(30, 2), this.gp);
+
+        } if (id.equals("27")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("47")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(31, 2), this.gp);
+
+        } if (id.equals("28")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 2), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("48")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(32, 2), this.gp);
+
+        } if (id.equals("29")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 2), this.gp);
             this.allTiles.add(newTile);
-    
+
+        } if (id.equals("30")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 2), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("31")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 2), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("32")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 2), this.gp);
+            this.allTiles.add(newTile);
+
         }
 
         // #endregion
 
         // #region 4th row
 
-        if (id.equals("49")) {
+        if (id.equals("33")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 4), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("50")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 4), this.gp);
+
+        } if (id.equals("34")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("51")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 4), this.gp);
+
+        } if (id.equals("35")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("52")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 4), this.gp);
+
+        } if (id.equals("36")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("53")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 4), this.gp);
+
+        } if (id.equals("37")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("54")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 4), this.gp);
+
+        } if (id.equals("38")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("55")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 4), this.gp);
+
+        } if (id.equals("39")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("56")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 4), this.gp);
+
+        } if (id.equals("40")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("57")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 4), this.gp);
+
+        } if (id.equals("41")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("58")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 4), this.gp);
+
+        } if (id.equals("42")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("59")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 4), this.gp);
+
+        } if (id.equals("43")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("60")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 4), this.gp);
+
+        } if (id.equals("44")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("61")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 4), this.gp);
+
+        } if (id.equals("45")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("62")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 4), this.gp);
+
+        } if (id.equals("46")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("63")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 4), this.gp);
+
+        } if (id.equals("47")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 3), this.gp);
             this.allTiles.add(newTile);
-    
-        } if (id.equals("64")) {
-    
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 4), this.gp);
+
+        } if (id.equals("48")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 3), this.gp);
             this.allTiles.add(newTile);
-    
+
         }
 
         // #endregion
 
         // #region 5th row
 
+        if (id.equals("49")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("50")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("51")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("52")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("53")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("54")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("55")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("56")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("57")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("58")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("59")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("60")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("61")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("62")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("63")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        } if (id.equals("64")) {
+
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 4), this.gp);
+            this.allTiles.add(newTile);
+
+        }
+
+        // #endregion
+
+        // #region 6th row
+
         if (id.equals("65")) {
 
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("66")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("67")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("68")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("69")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("70")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("71")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("72")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("73")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("74")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("75")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("76")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("77")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("78")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("79")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         } if (id.equals("80")) {
-    
+
             Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 5), this.gp);
             this.allTiles.add(newTile);
-    
+
         }
 
-        //#endregion
+        // #endregion
 
-        // #region 6th row
+        // #region 7th row
 
         if (id.equals("81")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 6), this.gp);
-            this.allTiles.add(newTile);
+            // Player 1
+
+            for (Player player : this.gp.controllerManager.players) {
+
+                if (player.playerNum == 1) {
+
+                    player.x = x;
+                    player.y = y;
+                    player.speedX = 0;
+                    player.speedY = 0;
+
+                }
+
+            }
 
         } if (id.equals("82")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 6), this.gp);
-            this.allTiles.add(newTile);
+            // Player 2
+
+            for (Player player : this.gp.controllerManager.players) {
+
+                if (player.playerNum == 2) {
+
+                    player.x = x;
+                    player.y = y;
+                    player.speedX = 0;
+                    player.speedY = 0;
+
+                }
+
+            }
 
         } if (id.equals("83")) {
 
@@ -564,7 +674,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 7th row
+        // #region 8th row
 
         if (id.equals("97")) {
 
@@ -650,7 +760,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 8th row
+        // #region 9th row
 
         if (id.equals("113")) {
 
@@ -736,7 +846,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 9th row
+        // #region 10th row
 
         if (id.equals("129")) {
 
@@ -822,7 +932,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 10th row
+        // #region 11th row
 
         if (id.equals("145")) {
 
@@ -908,7 +1018,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 11th row
+        // #region 12th row
 
         if (id.equals("161")) {
 
@@ -994,7 +1104,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 12th row
+        // #region 13th row
 
         if (id.equals("177")) {
 
@@ -1080,7 +1190,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 13th row
+        // #region 14th row
 
         if (id.equals("193")) {
 
@@ -1166,7 +1276,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 14th row
+        // #region 15th row
 
         if (id.equals("209")) {
 
@@ -1252,7 +1362,7 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 15th row
+        // #region 16th row
 
         if (id.equals("225")) {
 
@@ -1338,92 +1448,6 @@ public class SpriteManager {
 
         // #endregion
 
-        // #region 16th row
-
-        if (id.equals("241")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("242")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("243")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("244")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("245")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("246")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("247")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("248")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("249")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(8, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("250")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(9, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("251")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(10, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("252")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(11, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("253")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(12, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("254")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(13, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("255")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(14, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        } if (id.equals("256")) {
-
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(15, 16), this.gp);
-            this.allTiles.add(newTile);
-
-        }
-
-        // #endregion
-
     }
 
 
@@ -1445,7 +1469,7 @@ public class SpriteManager {
 
             reader.close();
 
-            mapStr = mapStr.replace("<?xmlversion=\"1.0\"encoding=\"UTF-8\"?><mapversion=\"1.4\"tiledversion=\"1.4.3\"orientation=\"orthogonal\"renderorder=\"right-down\"width=\"32\"height=\"" + mapHeight + "\"tilewidth=\"8\"tileheight=\"8\"infinite=\"0\"nextlayerid=\"2\"nextobjectid=\"1\"><tilesetfirstgid=\"1\"source=\"JavaTileset.tsx\"/><layerid=\"1\"name=\"TileLayer1\"width=\"32\"height=\"28\"><dataencoding=\"csv\">", "");
+            mapStr = mapStr.replace("<?xmlversion=\"1.0\"encoding=\"UTF8\"?><mapversion=\"1.4\"tiledversion=\"1.4.3\"orientation=\"orthogonal\"renderorder=\"rightdown\"width=\"32\"height=\"" + mapHeight + "\"tilewidth=\"8\"tileheight=\"8\"infinite=\"0\"nextlayerid=\"2\"nextobjectid=\"1\"><tilesetfirstgid=\"1\"source=\"JavaTileset.tsx\"/><layerid=\"1\"name=\"TileLayer1\"width=\"32\"height=\"28\"><dataencoding=\"csv\">", "");
             
         } catch (IOException e) {
             

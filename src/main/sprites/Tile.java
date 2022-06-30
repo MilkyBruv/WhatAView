@@ -46,7 +46,7 @@ public class Tile extends Sprite {
         this.rect.height = settings.TILESIZE;
 
         // If the tile is a platform
-        if (this.id.equals("65")) {
+        if (this.id.equals("60")) {
 
             this.rect.width = settings.TILESIZE;
             this.rect.height = 2 * settings.tileScale;
@@ -54,7 +54,7 @@ public class Tile extends Sprite {
         }
 
         // If the tile is a rope
-        if (this.id.equals("85")) {
+        if (this.id.equals("59")) {
 
             this.rect.x = this.x + 3 * settings.tileScale;
             this.rect.y = this.y;
@@ -107,7 +107,7 @@ public class Tile extends Sprite {
         this.drawY = this.y + this.scrollDiff;
 
         // If the tile is a platform
-        if (this.id.equals("65")) {
+        if (this.id.equals("60")) {
 
             this.rect.x = this.x;
             this.rect.y = this.y;
@@ -117,7 +117,7 @@ public class Tile extends Sprite {
         }
 
         // If the tile is a rope
-        if (this.id.equals("85")) {
+        if (this.id.equals("59")) {
 
             this.rect.x = this.x + 3 * settings.tileScale;
             this.rect.y = this.y;
@@ -126,7 +126,7 @@ public class Tile extends Sprite {
 
         }
 
-        if (!this.id.equals("65") && !this.id.equals("85")) {
+        if (!this.id.equals("60") && !this.id.equals("59")) {
 
             this.rect.x = this.x;
             this.rect.y = this.y;

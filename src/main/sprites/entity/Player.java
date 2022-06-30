@@ -930,7 +930,7 @@ public class Player extends Sprite {
 
             for (Tile tile : gp.spriteManager.allTiles) {
 
-                if (!tile.id.equals("65") && tile.solid && this.rect.intersects(tile.rect)) {
+                if (!tile.id.equals("60") && tile.solid && this.rect.intersects(tile.rect)) {
 
                     if (this.speedX < 0) {
 
@@ -964,7 +964,7 @@ public class Player extends Sprite {
 
             for (Tile tile : gp.spriteManager.allTiles) {
 
-                if (!tile.id.equals("65") && tile.solid && this.rect.intersects(tile.rect)) {
+                if (!tile.id.equals("60") && tile.solid && this.rect.intersects(tile.rect)) {
 
                     if (this.speedY < 0) {
 
@@ -1007,7 +1007,7 @@ public class Player extends Sprite {
                 this.platformRect.width = settings.TILESIZE;
                 this.platformRect.height = settings.TILESIZE / 4;
 
-                if (tile.id.equals("65") && this.platformRect.intersects(tile.rect)) {
+                if (tile.id.equals("60") && this.platformRect.intersects(tile.rect)) {
 
                     if (this.speedY > 0) {
 
@@ -1103,7 +1103,7 @@ public class Player extends Sprite {
             this.ropeRect.width = 2 * settings.tileScale;
             this.ropeRect.height = settings.TILESIZE;
 
-            if (tile.id.equals("85") && this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
+            if (tile.id.equals("59") && this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
 
                 this.ropeRectX = tile.rect.x - 3 * settings.tileScale;
                 this.ropeCollisions.add(true);
@@ -1191,11 +1191,15 @@ public class Player extends Sprite {
 
     public void detectDangerousCollisions() {
 
-        for (Tile tile : gp.spriteManager.allDangerousTiles) {
+        for (Tile tile : gp.spriteManager.allTiles) {
 
-            if (this.rect.intersects(tile.rect)) {
+            if (tile.dangerous) {
 
-                this.kill();
+                if (this.rect.intersects(tile.rect)) {
+
+                    this.kill();
+
+                }
 
             }
 
