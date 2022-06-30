@@ -328,6 +328,52 @@ public class Player extends Sprite {
 
 
 
+    public void getKeyboardInputYOptions() {
+
+        if (gp.keyHandler.downPressed && !this.hasMovedContY) {
+
+            if (gp.menuManager.currentMenu.currentSelection < gp.menuManager.currentMenu.itemCount - 1) {
+
+                gp.menuManager.currentMenu.currentSelection++;
+
+            }
+
+            if (gp.menuManager.currentMenu.currentSelection == 0) {
+
+                gp.menuManager.currentMenu.currentSelection = gp.menuManager.currentMenu.itemCount - 1;
+
+            }
+
+            this.hasMovedContY = true;
+
+        } else if (gp.keyHandler.upPressed && !this.hasMovedContY) {
+
+            if (gp.menuManager.currentMenu.currentSelection > 0) {
+
+                gp.menuManager.currentMenu.currentSelection--;
+
+            }
+
+            if (gp.menuManager.currentMenu.currentSelection == gp.menuManager.currentMenu.itemCount - 1) {
+
+                gp.menuManager.currentMenu.currentSelection = 0;
+
+            }
+
+            this.hasMovedContY = true;
+
+        }
+
+        if (!gp.keyHandler.downPressed && !gp.keyHandler.upPressed && this.hasMovedContY) {
+
+            this.hasMovedContY = false;
+
+        }
+
+    }
+
+
+
     public void getKeyboardInputShoot() {
 
         if (gp.keyHandler.shootPressed && !this.hasPressedSquare) {
@@ -407,6 +453,64 @@ public class Player extends Sprite {
 
 
 
+    public void getKeyboardInputSelect() {
+
+        if (gp.keyHandler.jumpPressed && !this.hasPressedX) {
+
+            gp.menuManager.currentMenu.excecuteItem();
+            this.hasPressedX = true;
+
+        }
+
+        if (!gp.keyHandler.jumpPressed && this.hasPressedX) {
+
+            this.hasPressedX = false;
+
+        }
+
+    }
+
+
+
+    public void getKeyboardInputEscape() {
+
+        if (gp.keyHandler.escPressed && !this.hasPressedOptions) {
+
+            if (this.playerNum == 1) {
+
+                if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
+
+                    gp.menuManager.inMenu = true;
+                    gp.menuManager.currentMenu = gp.menuManager.pauseMenu;
+
+                } else if (gp.menuManager.inMenu) {
+
+                    gp.menuManager.inMenu = false;
+                    gp.menuManager.inSubMenu = false;
+    
+                } else if (gp.menuManager.inSubMenu) {
+    
+                    gp.menuManager.inSubMenu = false;
+                    gp.menuManager.inMenu = true;
+    
+                }
+
+                this.hasPressedOptions = true;
+
+            }
+
+        }
+
+        if (!gp.keyHandler.escPressed && this.hasPressedOptions) {
+
+            this.hasPressedOptions = false;
+
+        }
+
+    }
+
+
+
     public void getOptionsButtonInput() {
 
         if (this.controller.isButtonPressed("options") && !this.hasPressedOptions) {
@@ -418,6 +522,16 @@ public class Player extends Sprite {
                     gp.menuManager.inMenu = true;
                     gp.menuManager.currentMenu = gp.menuManager.pauseMenu;
 
+                } else if (gp.menuManager.inMenu) {
+
+                    gp.menuManager.inMenu = false;
+                    gp.menuManager.inSubMenu = false;
+    
+                } else if (gp.menuManager.inSubMenu) {
+    
+                    gp.menuManager.inSubMenu = false;
+                    gp.menuManager.inMenu = true;
+    
                 }
 
                 this.hasPressedOptions = true;
@@ -1252,6 +1366,20 @@ public class Player extends Sprite {
 
                 this.getContInputYOptions();
                 this.getXButtonInputOptions();
+
+            }
+
+        }
+
+        if (gp.PLAYMODE.equals("k")) {
+
+            this.getOptionsButtonInput();
+            this.getCircleButtonInput();
+
+            if (gp.menuManager.inMenu || gp.menuManager.inSubMenu) {
+
+                this.getKeyboardInputEscape();
+                this.getKeyboardInputSelect();
 
             }
 

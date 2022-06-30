@@ -55,7 +55,7 @@ public class PauseMenu extends Menu {
     @Override
     public void item3() {
 
-        System.exit(0);
+        gp.menuManager.currentMenu = gp.menuManager.startMenu;
 
     }
 

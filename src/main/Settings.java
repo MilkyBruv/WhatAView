@@ -17,7 +17,7 @@ public class Settings {
     public final int SCREENWIDTH = TILEDWITDH * TILESIZE;   //? 256 (base size)
     public final int SCREENHEIGHT = TILEDHEIGHT * TILESIZE; //? 224 (base size)
 
-    public final int SCROLLWAIT = 300000000 / 4 * 3;
+    public final int SCROLLWAIT = 300000000 / 4 * 2;
     public float SCROLLSPEED = tileScale;
 
     public final int PARTICLEWAIT = 10000000;
@@ -25,9 +25,9 @@ public class Settings {
     public final int SHAKEWAIT = 20000000;
     public final int SHAKEAMT = 5;
 
-    public int PLAYERSPEED = 4;
-    public int PLAYERJUMP = 15;
-    public int PLAYERDOUBLEJUMP = 10;
+    public int PLAYERSPEED = 6;
+    public int PLAYERJUMP = 16;
+    public int PLAYERDOUBLEJUMP = 13;
     public float PLAYERGRAVITY = 1f;
 
 }

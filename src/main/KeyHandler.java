@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, shootPressed, jumpPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, shootPressed, jumpPressed, escPressed;
     public char charPressed = '0';
     private char prevCharPressed = '1';
     public String currentKeyPressed = "";
@@ -79,6 +79,12 @@ public class KeyHandler implements KeyListener {
             jumpPressed = true;
 
         }
+
+        if (code == KeyEvent.VK_ESCAPE) {
+
+            escPressed = true;
+
+        }
         
     }
 
@@ -120,6 +126,12 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_C || code == KeyEvent.VK_M) {
 
             jumpPressed = false;
+
+        }
+
+        if (code == KeyEvent.VK_ESCAPE) {
+
+            escPressed = false;
 
         }
 
