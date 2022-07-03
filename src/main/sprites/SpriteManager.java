@@ -396,12 +396,12 @@ public class SpriteManager {
 
         if (id.equals("65")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(0, 4), this.gp);
+            Tile newTile = new Tile(x, y, id, false, true, spritesheet.getSubTile(0, 4), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("66")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(1, 4), this.gp);
+            Tile newTile = new Tile(x, y, id, false, true, spritesheet.getSubTile(1, 4), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("67")) {
