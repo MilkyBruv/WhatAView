@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Init classes
     private Settings settings = new Settings();
     BufferedImage testImage;
-    public String PLAYMODE = "c"; // k = keyboard | c = controller
+    public String PLAYMODE = "k"; // k = keyboard | c = controller
     public float scrollWait = settings.SCROLLWAIT;
     String line;
     Thread gameThread;

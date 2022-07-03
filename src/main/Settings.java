@@ -9,7 +9,7 @@ public class Settings {
     public final int FPS = 60;
 
     final int baseTileSize = 8;
-    public final int tileScale = 4;
+    public final int tileScale = 3;
     public final int TILESIZE = baseTileSize * tileScale; //? 32
 
     public final int TILEDWITDH = 32;
@@ -25,8 +25,8 @@ public class Settings {
     public final int SHAKEWAIT = 20000000;
     public final int SHAKEAMT = 5;
 
-    public int PLAYERSPEED = 6;
-    public int PLAYERJUMP = 16;
+    public int PLAYERSPEED = tileScale * 2;
+    public int PLAYERJUMP = tileScale * 4;
     public int PLAYERDOUBLEJUMP = 13;
     public float PLAYERGRAVITY = 1f;
 

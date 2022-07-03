@@ -1377,13 +1377,13 @@ public class Player extends Sprite {
 
         if (gp.PLAYMODE.equals("k")) {
 
-            this.getOptionsButtonInput();
-            this.getCircleButtonInput();
+            this.getKeyboardInputEscape();
 
             if (gp.menuManager.inMenu || gp.menuManager.inSubMenu) {
 
                 this.getKeyboardInputEscape();
                 this.getKeyboardInputSelect();
+                this.getKeyboardInputYOptions();
 
             }
 
