@@ -27,7 +27,7 @@ public class Settings {
 
     public int PLAYERSPEED = tileScale * 2;
     public int PLAYERJUMP = tileScale * 4;
-    public int PLAYERDOUBLEJUMP = 13;
+    public int PLAYERDOUBLEJUMP = tileScale * 3;
     public float PLAYERGRAVITY = 1f;
 
 }
