@@ -980,6 +980,10 @@ public class Player extends Sprite {
                         this.onGround = true;
                         this.hasShotDown = false;
 
+                    } else {
+
+                        this.onGround = false;
+
                     }
 
                     this.speedY = 0;

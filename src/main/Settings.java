@@ -23,7 +23,7 @@ public class Settings {
     public final int PARTICLEWAIT = 10000000;
 
     public final int SHAKEWAIT = 20000000;
-    public final int SHAKEAMT = 5;
+    public final int SHAKEAMT = 3;
 
     public int PLAYERSPEED = tileScale * 2;
     public int PLAYERJUMP = tileScale * 4;
