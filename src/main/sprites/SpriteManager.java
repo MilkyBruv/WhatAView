@@ -881,9 +881,9 @@ public class SpriteManager {
 
         for (int y = 0; y < mapHeight; y++) {
             
-            for (int x = 0; x < settings.TILEDWITDH; x++) {
+            for (int x = 0; x < settings.TILED_WIDTH; x++) {
                 
-                mapPositionData.add(new int[] {x * settings.TILESIZE, (y * settings.TILESIZE) - ((mapHeight * settings.TILESIZE) - settings.SCREENHEIGHT)});
+                mapPositionData.add(new int[] {x * settings.TILE_SIZE, (y * settings.TILE_SIZE) - ((mapHeight * settings.TILE_SIZE) - settings.SCREEN_HEIGHT)});
 
             }
 

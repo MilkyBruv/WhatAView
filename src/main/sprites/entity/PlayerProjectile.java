@@ -37,8 +37,8 @@ public class PlayerProjectile extends Sprite {
         this.y = y;
         this.drawX = this.x;
         this.drawY = this.y;
-        this.width = 4 * settings.tileScale;
-        this.height = 4 * settings.tileScale;
+        this.width = 4 * settings.TILE_SCALE;
+        this.height = 4 * settings.TILE_SCALE;
         this.scrollDiff = 0;
         this.lastUpdate = 0f;
 
@@ -53,30 +53,30 @@ public class PlayerProjectile extends Sprite {
         if (this.dir[0]) {
 
             this.image = this.images[0];
-            this.y -= settings.TILESIZE / 2;
-            this.x += settings.TILESIZE / 4;
+            this.y -= settings.TILE_SIZE / 2;
+            this.x += settings.TILE_SIZE / 4;
 
         } else if (this.dir[1]) {
 
             this.image = this.images[1];
-            this.y += settings.TILESIZE;
-            this.x += settings.TILESIZE / 4;
+            this.y += settings.TILE_SIZE;
+            this.x += settings.TILE_SIZE / 4;
 
         } else if (this.dir[2]) {
 
             this.image = this.images[2];
-            this.y += settings.TILESIZE / 4;
+            this.y += settings.TILE_SIZE / 4;
 
         } else if (this.dir[3]) {
 
             this.image = this.images[3];
-            this.x += settings.TILESIZE;
-            this.y += settings.TILESIZE / 4;
+            this.x += settings.TILE_SIZE;
+            this.y += settings.TILE_SIZE / 4;
 
         }
 
-        this.width = this.image.getWidth() * settings.tileScale;
-        this.height = this.image.getHeight() * settings.tileScale;
+        this.width = this.image.getWidth() * settings.TILE_SCALE;
+        this.height = this.image.getHeight() * settings.TILE_SCALE;
 
         this.rect = new Rectangle();
         this.rect.x = this.x;
@@ -92,8 +92,8 @@ public class PlayerProjectile extends Sprite {
 
         this.collided = true;
 
-        this.x = -settings.TILESIZE;
-        this.y = -settings.TILESIZE;
+        this.x = -settings.TILE_SIZE;
+        this.y = -settings.TILE_SIZE;
         this.speed = 0;
 
         this.rect.x = this.x;
@@ -109,11 +109,11 @@ public class PlayerProjectile extends Sprite {
 
         long now = System.nanoTime();
 
-        if (now - this.lastUpdate > settings.SCROLLWAIT) {
+        if (now - this.lastUpdate > settings.SCROLL_WAIT) {
 
             this.lastUpdate = now;
 
-            this.scrollDiff += settings.SCROLLSPEED;
+            this.scrollDiff += settings.SCROLL_SPEED;
 
         }
 
@@ -130,8 +130,8 @@ public class PlayerProjectile extends Sprite {
 
         if (!this.collided) {
 
-            this.width = this.image.getWidth() * settings.tileScale;
-            this.height = this.image.getHeight() * settings.tileScale;
+            this.width = this.image.getWidth() * settings.TILE_SCALE;
+            this.height = this.image.getHeight() * settings.TILE_SCALE;
 
             this.rect = new Rectangle();
             this.rect.x = this.x;

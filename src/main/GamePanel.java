@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Settings settings = new Settings();
     BufferedImage testImage;
     public String PLAYMODE = "k"; // k = keyboard | c = controller
-    public float scrollWait = settings.SCROLLWAIT;
+    public float scrollWait = settings.SCROLL_WAIT;
     String line;
     Thread gameThread;
     public KeyHandler keyHandler = new KeyHandler(this);
@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
 
-        this.setPreferredSize(new Dimension(settings.SCREENWIDTH, settings.SCREENHEIGHT));
+        this.setPreferredSize(new Dimension(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
@@ -137,9 +137,9 @@ public class GamePanel extends JPanel implements Runnable {
                 
                 if (!sprite.destroyed) {
 
-                    if (sprite.drawX > -settings.TILESIZE && sprite.drawX <= settings.SCREENWIDTH) {
+                    if (sprite.drawX > -settings.TILE_SIZE && sprite.drawX <= settings.SCREEN_WIDTH) {
                         
-                        if (sprite.drawY > -settings.TILESIZE && sprite.drawY <= settings.SCREENHEIGHT) {
+                        if (sprite.drawY > -settings.TILE_SIZE && sprite.drawY <= settings.SCREEN_HEIGHT) {
                             
                             if (sprite.id.equals("66") && !sprite.destroyed) {
 

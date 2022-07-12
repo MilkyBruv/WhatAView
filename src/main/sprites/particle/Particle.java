@@ -32,13 +32,13 @@ public class Particle extends Sprite {
         this.player = player;
         this.type = type;
 
-        this.x = -settings.TILESIZE;
-        this.y = -settings.TILESIZE;
+        this.x = -settings.TILE_SIZE;
+        this.y = -settings.TILE_SIZE;
         this.drawX = this.x;
         this.drawY = this.y;
         this.setImage();
-        this.width = this.image.getWidth() * settings.tileScale;
-        this.height = this.image.getHeight() * settings.tileScale;
+        this.width = this.image.getWidth() * settings.TILE_SCALE;
+        this.height = this.image.getHeight() * settings.TILE_SCALE;
         this.scrollDiff = 0;
 
     }
@@ -71,7 +71,7 @@ public class Particle extends Sprite {
 
             this.lastUpdate = now;
 
-            this.scrollDiff += settings.SCROLLSPEED;
+            this.scrollDiff += settings.SCROLL_SPEED;
 
         }
 
@@ -86,8 +86,8 @@ public class Particle extends Sprite {
         this.drawX = this.x;
         this.drawY = this.y + this.scrollDiff;
         
-        this.width = this.image.getWidth() * settings.tileScale;
-        this.height = this.image.getHeight() * settings.tileScale;
+        this.width = this.image.getWidth() * settings.TILE_SCALE;
+        this.height = this.image.getHeight() * settings.TILE_SCALE;
 
         this.setImage();
 
@@ -95,12 +95,12 @@ public class Particle extends Sprite {
 
             long now = System.nanoTime();
 
-            if (now - this.lastParticleUpdate >= settings.PARTICLEWAIT) {
+            if (now - this.lastParticleUpdate >= settings.PARTICLE_WAIT) {
 
                 this.lastParticleUpdate = now;
 
-                this.x = -settings.TILESIZE;
-                this.y = -settings.TILESIZE;
+                this.x = -settings.TILE_SIZE;
+                this.y = -settings.TILE_SIZE;
                 this.active = false;
 
             }

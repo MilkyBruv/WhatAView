@@ -23,6 +23,7 @@ public class Player extends Sprite {
     public float gravity;
     public int jump;
     public int doubleJump;
+    public float maxFallSpeed;
 
     public int playerNum;
 
@@ -106,17 +107,18 @@ public class Player extends Sprite {
         this.y = y;
         this.drawX = this.x;
         this.drawY = this.y;
-        this.width = settings.TILESIZE;
-        this.height = settings.TILESIZE;
+        this.width = settings.TILE_SIZE;
+        this.height = settings.TILE_SIZE;
         this.scrollDiff = 0;
         this.projectileImages = projectileImages;
         this.speedX = 0;
         this.speedY = 0;
-        this.speed = settings.PLAYERSPEED;
+        this.speed = settings.PLAYER_SPEED;
 
-        this.gravity = settings.PLAYERGRAVITY;
-        this.jump = settings.PLAYERJUMP;
-        this.doubleJump = settings.PLAYERDOUBLEJUMP;
+        this.gravity = settings.PLAYER_GRAVITY;
+        this.jump = settings.PLAYER_JUMP;
+        this.doubleJump = settings.PLAYER_DOUBLE_JUMP;
+        this.maxFallSpeed = settings.PLAYER_MAX_FALL_SPEED;
         
         this.dead = false;
 
@@ -158,20 +160,20 @@ public class Player extends Sprite {
         this.rect = new Rectangle();
         this.rect.x = this.x + 1;
         this.rect.y = this.y + 1;
-        this.rect.width = settings.TILESIZE - 2;
-        this.rect.height = settings.TILESIZE - 2;
+        this.rect.width = settings.TILE_SIZE - 2;
+        this.rect.height = settings.TILE_SIZE - 2;
 
         this.platformRect = new Rectangle();
         this.platformRect.x = this.x;
-        this.platformRect.y = this.y + settings.TILESIZE;
-        this.platformRect.width = settings.TILESIZE;
-        this.platformRect.height = settings.TILESIZE / 4;
+        this.platformRect.y = this.y + settings.TILE_SIZE;
+        this.platformRect.width = settings.TILE_SIZE;
+        this.platformRect.height = settings.TILE_SIZE / 4;
 
         this.ropeRect = new Rectangle();
-        this.ropeRect.x = this.x + 3 * settings.tileScale;
+        this.ropeRect.x = this.x + 3 * settings.TILE_SCALE;
         this.ropeRect.y = this.y;
-        this.ropeRect.width = 2 * settings.tileScale;
-        this.ropeRect.height = settings.TILESIZE;
+        this.ropeRect.width = 2 * settings.TILE_SCALE;
+        this.ropeRect.height = settings.TILE_SIZE;
 
         // #region Images init
 
@@ -934,20 +936,20 @@ public class Player extends Sprite {
 
                     if (this.speedX < 0) {
 
-                        this.x = tile.x + settings.TILESIZE;
+                        this.x = tile.x + settings.TILE_SIZE;
                         this.collidedLeft = true;
 
                     }
 
                     if (this.speedX > 0) {
 
-                        this.x = tile.x - settings.TILESIZE;
+                        this.x = tile.x - settings.TILE_SIZE;
                         this.collidedRight = true;
 
                     }
 
                     this.rect.x = this.x;
-                    this.rect.width = settings.TILESIZE;
+                    this.rect.width = settings.TILE_SIZE;
 
                 } else {
 
@@ -968,14 +970,14 @@ public class Player extends Sprite {
 
                     if (this.speedY < 0) {
 
-                        this.y = tile.y + settings.TILESIZE;
+                        this.y = tile.y + settings.TILE_SIZE;
                         this.collidedTop = true;
 
                     }
 
                     if (this.speedY > 0) {
 
-                        this.y = tile.y - settings.TILESIZE;
+                        this.y = tile.y - settings.TILE_SIZE;
                         this.collidedBottom = true;
                         this.onGround = true;
                         this.hasShotDown = false;
@@ -988,7 +990,7 @@ public class Player extends Sprite {
 
                     this.speedY = 0;
                     this.rect.y = this.y;
-                    this.rect.height = settings.TILESIZE;
+                    this.rect.height = settings.TILE_SIZE;
 
                 }
 
@@ -1007,24 +1009,24 @@ public class Player extends Sprite {
             for (Tile tile : gp.spriteManager.allTiles) {
 
                 this.platformRect.x = this.x;
-                this.platformRect.y = this.y + settings.TILESIZE;
-                this.platformRect.width = settings.TILESIZE;
-                this.platformRect.height = settings.TILESIZE / 4;
+                this.platformRect.y = this.y + settings.TILE_SIZE;
+                this.platformRect.width = settings.TILE_SIZE;
+                this.platformRect.height = settings.TILE_SIZE / 4;
 
                 if (tile.id.equals("60") && this.platformRect.intersects(tile.rect)) {
 
                     if (this.speedY > 0) {
 
-                        this.y = tile.y - settings.TILESIZE - 1;
+                        this.y = tile.y - settings.TILE_SIZE - 1;
                         this.onGround = true;
                         this.hasShotDown = false;
                         this.collidedBottom = true;
 
                         this.speedY = 0;
                         this.platformRect.x = this.x;
-                        this.platformRect.y = this.y + settings.TILESIZE;
-                        this.platformRect.width = settings.TILESIZE;
-                        this.platformRect.height = settings.TILESIZE / 4;
+                        this.platformRect.y = this.y + settings.TILE_SIZE;
+                        this.platformRect.width = settings.TILE_SIZE;
+                        this.platformRect.height = settings.TILE_SIZE / 4;
 
                     }
 
@@ -1102,14 +1104,14 @@ public class Player extends Sprite {
 
         for (Tile tile : gp.spriteManager.allRopeTiles) {
 
-            this.ropeRect.x = this.x + 3 * settings.tileScale;
+            this.ropeRect.x = this.x + 3 * settings.TILE_SCALE;
             this.ropeRect.y = this.y;
-            this.ropeRect.width = 2 * settings.tileScale;
-            this.ropeRect.height = settings.TILESIZE;
+            this.ropeRect.width = 2 * settings.TILE_SCALE;
+            this.ropeRect.height = settings.TILE_SIZE;
 
             if (tile.id.equals("59") && this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
 
-                this.ropeRectX = tile.rect.x - 3 * settings.tileScale;
+                this.ropeRectX = tile.rect.x - 3 * settings.TILE_SCALE;
                 this.ropeCollisions.add(true);
 
             } else {
@@ -1259,7 +1261,7 @@ public class Player extends Sprite {
 
             this.lastUpdate = now;
 
-            this.scrollDiff += settings.SCROLLSPEED;
+            this.scrollDiff += settings.SCROLL_SPEED;
 
         }
 
@@ -1327,7 +1329,11 @@ public class Player extends Sprite {
                 if (!this.onRope) {
 
                     this.speedY += this.gravity;
-                    this.y += this.speedY + this.gravity / 2;
+                    float preAdd = this.speedY + (this.gravity * 0.5f);
+                    if (preAdd > this.maxFallSpeed) { preAdd = this.maxFallSpeed; }
+                    this.y += preAdd;
+                    System.out.println(preAdd);
+
 
                 }
 
@@ -1344,19 +1350,19 @@ public class Player extends Sprite {
                 //      Collisions
                 // Main rect
                 this.rect.x = this.x + 1;
-                this.rect.width = settings.TILESIZE - 2;
+                this.rect.width = settings.TILE_SIZE - 2;
 
                 this.detectCollisions("x");
 
                 // Main rect
                 this.rect.y = this.y + 1;
-                this.rect.height = settings.TILESIZE - 2;
+                this.rect.height = settings.TILE_SIZE - 2;
 
                 // Platform rect
                 this.platformRect.x = this.x;
-                this.platformRect.y = this.y + settings.TILESIZE;
-                this.platformRect.width = settings.TILESIZE;
-                this.platformRect.height = settings.TILESIZE / 4;
+                this.platformRect.y = this.y + settings.TILE_SIZE;
+                this.platformRect.width = settings.TILE_SIZE;
+                this.platformRect.height = settings.TILE_SIZE / 4;
 
                 this.detectCollisions("y");
                 this.detectPlatformCollisions();
@@ -1399,11 +1405,11 @@ public class Player extends Sprite {
 
     public void draw(Graphics2D g2) {
 
-        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILESIZE, settings.TILESIZE, null);
+        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
 
         if (gp.controllerManager.playerCount == 2) {
 
-            spritesheet.drawTextNoBG(g2, "P" + this.playerNum, this.drawX - settings.TILESIZE / 2, this.drawY - settings.TILESIZE, new String[] {"custom", "custom"});
+            spritesheet.drawTextNoBG(g2, "P" + this.playerNum, this.drawX - settings.TILE_SIZE / 2, this.drawY - settings.TILE_SIZE, new String[] {"custom", "custom"});
 
         }
 
@@ -1422,9 +1428,9 @@ public class Player extends Sprite {
 
             this.landParticle.image, 
             this.landParticle.drawX, 
-            this.landParticle.drawY + (settings.TILESIZE - this.jumpParticle.image.getHeight() * settings.tileScale), 
-            this.landParticle.image.getWidth() * settings.tileScale, 
-            this.landParticle.image.getHeight() * settings.tileScale, 
+            this.landParticle.drawY + (settings.TILE_SIZE - this.jumpParticle.image.getHeight() * settings.TILE_SCALE), 
+            this.landParticle.image.getWidth() * settings.TILE_SCALE, 
+            this.landParticle.image.getHeight() * settings.TILE_SCALE, 
             null
 
         );
@@ -1433,9 +1439,9 @@ public class Player extends Sprite {
 
             this.jumpParticle.image, 
             this.jumpParticle.drawX, 
-            this.jumpParticle.drawY + (settings.TILESIZE - this.jumpParticle.image.getHeight() * settings.tileScale), 
-            this.jumpParticle.image.getWidth() * settings.tileScale, 
-            this.jumpParticle.image.getHeight() * settings.tileScale, 
+            this.jumpParticle.drawY + (settings.TILE_SIZE - this.jumpParticle.image.getHeight() * settings.TILE_SCALE), 
+            this.jumpParticle.image.getWidth() * settings.TILE_SCALE, 
+            this.jumpParticle.image.getHeight() * settings.TILE_SCALE, 
             null
 
         );

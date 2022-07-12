@@ -27,7 +27,7 @@ public class Enemy extends Sprite {
 
     public void draw(Graphics2D g2) {
 
-        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILESIZE, settings.TILESIZE, null);
+        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
 
     }
 

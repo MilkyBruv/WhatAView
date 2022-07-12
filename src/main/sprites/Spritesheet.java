@@ -166,9 +166,9 @@ public class Spritesheet {
         String fitText;
         
         // Limit characters in string to 32 (32 tiles wide)
-        if (text.length() > settings.TILEDWITDH) {
+        if (text.length() > settings.TILED_WIDTH) {
             
-            fitText = text.substring(0, settings.TILEDWITDH - 1);
+            fitText = text.substring(0, settings.TILED_WIDTH - 1);
             
         } else {
             
@@ -176,7 +176,7 @@ public class Spritesheet {
             
         }
         
-        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILESIZE, settings.TILESIZE, BufferedImage.TYPE_INT_RGB);
+        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILE_SIZE, settings.TILE_SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
         for (int i = 0 ; i < fitText.length() ; i++) {
@@ -193,7 +193,7 @@ public class Spritesheet {
             };
 
             BufferedImage charImage = getSubImage(tileCoords[0] * 8, tileCoords[1] * 8, 8, 8);
-            g.drawImage(charImage, i * settings.TILESIZE, 0, settings.TILESIZE, settings.TILESIZE, null);
+            g.drawImage(charImage, i * settings.TILE_SIZE, 0, settings.TILE_SIZE, settings.TILE_SIZE, null);
 
         }
 
@@ -219,13 +219,13 @@ public class Spritesheet {
 
         if (pos[0].equals("right")) {
 
-            xDes = (settings.SCREENWIDTH - text.length() * settings.TILESIZE) + x;
+            xDes = (settings.SCREEN_WIDTH - text.length() * settings.TILE_SIZE) + x;
 
         }
 
         if (pos[0].equals("center")) {
 
-            xDes = ((settings.SCREENWIDTH - text.length() * settings.TILESIZE) / 2) + x;
+            xDes = ((settings.SCREEN_WIDTH - text.length() * settings.TILE_SIZE) / 2) + x;
 
         }
 
@@ -247,13 +247,13 @@ public class Spritesheet {
 
         if (pos[1].equals("bottom")) {
 
-            yDes = settings.SCREENHEIGHT - settings.TILESIZE + y;
+            yDes = settings.SCREEN_HEIGHT - settings.TILE_SIZE + y;
 
         }
 
         if (pos[1].equals("center")) {
 
-            yDes = 13 * settings.TILESIZE + y;
+            yDes = 13 * settings.TILE_SIZE + y;
 
         }
 
@@ -277,9 +277,9 @@ public class Spritesheet {
         String fitText;
         
         // Limit characters in string to 32 (32 tiles wide)
-        if (text.length() > settings.TILEDWITDH) {
+        if (text.length() > settings.TILED_WIDTH) {
             
-            fitText = text.substring(0, settings.TILEDWITDH - 1);
+            fitText = text.substring(0, settings.TILED_WIDTH - 1);
             
         } else {
             
@@ -287,7 +287,7 @@ public class Spritesheet {
             
         }
         
-        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILESIZE, settings.TILESIZE, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILE_SIZE, settings.TILE_SIZE, BufferedImage.TYPE_INT_ARGB);
         Graphics g = baseDisplay.getGraphics();
 
         for (int i = 0 ; i < fitText.length() ; i++) {
@@ -304,7 +304,7 @@ public class Spritesheet {
             };
 
             BufferedImage charImage = getSubImage(tileCoords[0] * 8, tileCoords[1] * 8, 8, 8);
-            g.drawImage(charImage, i * settings.TILESIZE, 0, settings.TILESIZE, settings.TILESIZE, null);
+            g.drawImage(charImage, i * settings.TILE_SIZE, 0, settings.TILE_SIZE, settings.TILE_SIZE, null);
 
         }
 
@@ -330,13 +330,13 @@ public class Spritesheet {
 
         if (pos[0].equals("right")) {
 
-            xDes = (settings.SCREENWIDTH - text.length() * settings.TILESIZE) + x;
+            xDes = (settings.SCREEN_WIDTH - text.length() * settings.TILE_SIZE) + x;
 
         }
 
         if (pos[0].equals("center")) {
 
-            xDes = ((settings.SCREENWIDTH - text.length() * settings.TILESIZE) / 2) + x;
+            xDes = ((settings.SCREEN_WIDTH - text.length() * settings.TILE_SIZE) / 2) + x;
 
         }
 
@@ -358,13 +358,13 @@ public class Spritesheet {
 
         if (pos[1].equals("bottom")) {
 
-            yDes = settings.SCREENHEIGHT - settings.TILESIZE + y;
+            yDes = settings.SCREEN_HEIGHT - settings.TILE_SIZE + y;
 
         }
 
         if (pos[1].equals("center")) {
 
-            yDes = 13 * settings.TILESIZE + y;
+            yDes = 13 * settings.TILE_SIZE + y;
 
         }
 
@@ -390,9 +390,9 @@ public class Spritesheet {
         String fitText;
         
         // Limit characters in string to 32 (32 tiles wide)
-        if (text.length() > settings.TILEDWITDH) {
+        if (text.length() > settings.TILED_WIDTH) {
             
-            fitText = text.substring(0, settings.TILEDWITDH - 1);
+            fitText = text.substring(0, settings.TILED_WIDTH - 1);
             
         } else {
             
@@ -400,7 +400,7 @@ public class Spritesheet {
             
         }
         
-        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILESIZE, settings.TILESIZE, BufferedImage.TYPE_INT_RGB);
+        BufferedImage baseDisplay = new BufferedImage(fitText.length() * settings.TILE_SIZE, settings.TILE_SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
         for (int i = 0 ; i < fitText.length() ; i++) {
@@ -417,7 +417,7 @@ public class Spritesheet {
             };
 
             BufferedImage charImage = getSubImage(tileCoords[0] * 8, tileCoords[1] * 8, 8, 8);
-            g.drawImage(charImage, i * settings.TILESIZE, 0, settings.TILESIZE, settings.TILESIZE, null);
+            g.drawImage(charImage, i * settings.TILE_SIZE, 0, settings.TILE_SIZE, settings.TILE_SIZE, null);
 
         }
 
