@@ -1253,21 +1253,6 @@ public class Player extends Sprite {
 
 
 
-    public void applyScroll() {
-
-        long now = System.nanoTime();
-
-        if (now - this.lastUpdate > this.gp.scrollWait) {
-
-            this.lastUpdate = now;
-
-            this.scrollDiff += settings.SCROLL_SPEED;
-
-        }
-
-    }
-
-
 
     public void kill() {
 
@@ -1280,11 +1265,6 @@ public class Player extends Sprite {
     public void update() {
 
         if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
-        
-            // Update draw pos
-            this.applyScroll();
-            this.drawX = this.x;
-            this.drawY = this.y + this.scrollDiff;
 
             // Controller input
             if (!this.dead) {

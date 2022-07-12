@@ -21,7 +21,8 @@ public class SpriteManager {
     public List<int[]> mapPositionData = new ArrayList<int[]>() {};
     public List<Object[]> mapIdData = new ArrayList<Object[]>() {};
 
-    public int currentMap = 1;
+    public int currentMapX = 1;
+    public int currentMapY = 0;
 
     private String mapStr = "";
 
@@ -30,7 +31,8 @@ public class SpriteManager {
     private GamePanel gp;
     private Utils utils = new Utils();
 
-    private int mapHeight = 120;
+    private int mapWidth = 0;
+    private int mapHeight = 0;
 
     public SpriteManager(GamePanel gp) {
 
@@ -40,7 +42,8 @@ public class SpriteManager {
         parseMapData();
         createSprites();
 
-        currentMap = 1;
+        currentMapX = 1;
+        currentMapY = 0;
 
     }
 
@@ -850,21 +853,29 @@ public class SpriteManager {
 
         try {
 
-            File file = new File("src/res/maps/tiledfiles/map" + currentMap + ".tmx");
+            File file = new File("src/res/maps/tiledfiles/map" + currentMapX + ".txt");
             Scanner reader = new Scanner(file);
+            String line = "amongus";
+            boolean gotWidth = false;
 
-            for (int i = 0; i < 147; i++) {
-                
-                String line = new String(reader.next());
+            while (reader.hasNext()) {
 
+                line = new String(reader.next());
                 mapStr += line;
+                mapHeight += 1;
+
+                if (!gotWidth) {
+
+                    String[] lineCounter = line.split(",");
+                    mapWidth = lineCounter.length;
+                    gotWidth = true;
+
+                }
 
             }
 
             reader.close();
 
-            mapStr = mapStr.replace("<?xmlversion=\"1.0\"encoding=\"UTF8\"?><mapversion=\"1.4\"tiledversion=\"1.4.3\"orientation=\"orthogonal\"renderorder=\"rightdown\"width=\"32\"height=\"" + mapHeight + "\"tilewidth=\"8\"tileheight=\"8\"infinite=\"0\"nextlayerid=\"2\"nextobjectid=\"1\"><tilesetfirstgid=\"1\"source=\"JavaTileset.tsx\"/><layerid=\"1\"name=\"TileLayer1\"width=\"32\"height=\"28\"><dataencoding=\"csv\">", "");
-            
         } catch (IOException e) {
             
             e.printStackTrace();
