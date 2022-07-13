@@ -25,10 +25,12 @@ public class Settings {
     public final int SHAKE_WAIT = 20000000;
     public final int SHAKE_AMT = 3;
 
-    public int PLAYER_SPEED = TILE_SCALE * 2;
-    public int PLAYER_JUMP = TILE_SCALE * 5;
+    public int PLAYER_SPEED = 2;
+    public int PLAYER_JUMP = TILE_SCALE * 4;
     public int PLAYER_DOUBLE_JUMP = TILE_SCALE * 3;
-    public float PLAYER_GRAVITY = 1f;
+    public float PLAYER_GRAVITY = 0.65f;
     public float PLAYER_MAX_FALL_SPEED = 12;
+    public float PLAYER_ACC_X = 12;
+    public float PLAYER_FRICTION = -0.2f;
 
 }

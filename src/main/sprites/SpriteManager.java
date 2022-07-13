@@ -38,12 +38,14 @@ public class SpriteManager {
 
         this.gp = gp;
 
+        this.currentMapX = 1;
+        this.currentMapY = 0;
+        this.mapWidth = 0;
+        this.mapHeight = 0;
+
         getMapStr();
         parseMapData();
         createSprites();
-
-        currentMapX = 1;
-        currentMapY = 0;
 
     }
 

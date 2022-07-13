@@ -10,7 +10,6 @@ import main.GamePanel;
 import main.Settings;
 import main.controller.PlayerController;
 import main.sprites.Tile;
-import main.sprites.particle.Particle;
 import main.sprites.Spritesheet;
 
 public class Player extends Sprite {
@@ -18,12 +17,13 @@ public class Player extends Sprite {
     public BufferedImage image;
     public BufferedImage[] projectileImages;
     public int speedX;
-    public int speedY;
+    public float speedY;
     public int speed;
     public float gravity;
     public int jump;
     public int doubleJump;
     public float maxFallSpeed;
+    public float accX;
 
     public int playerNum;
 
@@ -92,9 +92,6 @@ public class Player extends Sprite {
 
     // #endregion
 
-    private Particle landParticle;
-    private Particle jumpParticle;
-
     public List<PlayerProjectile> projectiles;
 
     public Player(int x, int y, BufferedImage[] projectileImages, PlayerController controller, int playerNum, GamePanel gp) {
@@ -112,8 +109,9 @@ public class Player extends Sprite {
         this.scrollDiff = 0;
         this.projectileImages = projectileImages;
         this.speedX = 0;
-        this.speedY = 0;
+        this.speedY = 0f;
         this.speed = settings.PLAYER_SPEED;
+        this.accX = settings.PLAYER_ACC_X;
 
         this.gravity = settings.PLAYER_GRAVITY;
         this.jump = settings.PLAYER_JUMP;
@@ -215,10 +213,6 @@ public class Player extends Sprite {
 
         this.image = this.idleImageRight;
 
-        // Create Particles
-        this.landParticle = new Particle(this, "land", gp);
-        this.jumpParticle = new Particle(this, "jump", gp);
-
     }
 
 
@@ -226,12 +220,13 @@ public class Player extends Sprite {
     public void getKeyboardInputX() {
 
         int pos = this.rect.x;
+        this.accX = 0;
 
         if (gp.keyHandler.leftPressed) {
 
             if (!this.collidedLeft) {
 
-                this.speedX = -this.speed;
+                this.accX = -this.speed;
 
             }
 
@@ -255,7 +250,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.speedX = this.speed;
+                this.accX = this.speed;
 
             }
 
@@ -426,8 +421,6 @@ public class Player extends Sprite {
                 this.onGround = false;
                 this.hasPressedX = true;
 
-                this.jumpParticle.create();
-
             }
 
             else if (!this.hasShotDown && !this.onGround && !this.onRope) { 
@@ -586,8 +579,6 @@ public class Player extends Sprite {
                 this.onGround = false;
                 this.hasPressedX = true;
 
-                this.jumpParticle.create();
-
             }
 
             else if (!this.hasShotDown && !this.onGround && !this.onRope) { 
@@ -689,12 +680,13 @@ public class Player extends Sprite {
     public void getContInputX() {
 
         int pos = this.rect.x;
+        this.accX = 0;
 
         if (this.controller.isAxisMoved("left")) {
 
             if (!this.collidedLeft) {
 
-                this.speedX = -this.speed;
+                this.accX = -this.speed;
 
             }
 
@@ -718,7 +710,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.speedX = this.speed;
+                this.accX = this.speed;
 
             }
 
@@ -1242,17 +1234,7 @@ public class Player extends Sprite {
 
     }
 
-
-
-    public void updateParticles() {
-
-        this.landParticle.update();
-        this.jumpParticle.update();
-
-    }
-
-
-
+    
 
     public void kill() {
 
@@ -1268,6 +1250,9 @@ public class Player extends Sprite {
 
             // Controller input
             if (!this.dead) {
+
+                this.drawX = this.x;
+                this.drawY = this.y;
 
                 if (gp.PLAYMODE.equals("c")) {
 
@@ -1300,7 +1285,6 @@ public class Player extends Sprite {
 
             // Update other instances / classes
             this.updateProjectiles();
-            this.updateParticles();
             this.gp.screenShake.update();
 
             // Apply gravity & speed
@@ -1312,8 +1296,6 @@ public class Player extends Sprite {
                     float preAdd = this.speedY + (this.gravity * 0.5f);
                     if (preAdd > this.maxFallSpeed) { preAdd = this.maxFallSpeed; }
                     this.y += preAdd;
-                    System.out.println(preAdd);
-
 
                 }
 
@@ -1323,11 +1305,29 @@ public class Player extends Sprite {
 
                 }
 
-                this.x += this.speedX;
+                // Calculate X physics
+                this.accX += this.speedX * settings.PLAYER_FRICTION;
+                this.speedX += this.accX;
+                double preAdd = this.speedX + 0.5 * this.accX;
 
-            
+                if (preAdd > 6) {
 
-                //      Collisions
+                    preAdd = 6;
+
+                } else if (preAdd < -6) {
+
+                    preAdd = -6;
+
+                }
+
+                this.x += preAdd;
+                System.out.println(preAdd);
+
+                // Round pos to nearest scaled pixel
+                this.x = settings.TILE_SCALE * (Math.round(this.x / settings.TILE_SCALE));
+                this.y = settings.TILE_SCALE * (Math.round(this.y / settings.TILE_SCALE));
+
+                // Collisions
                 // Main rect
                 this.rect.x = this.x + 1;
                 this.rect.width = settings.TILE_SIZE - 2;
@@ -1402,29 +1402,6 @@ public class Player extends Sprite {
             }
 
         }
-
-        
-        g2.drawImage(
-
-            this.landParticle.image, 
-            this.landParticle.drawX, 
-            this.landParticle.drawY + (settings.TILE_SIZE - this.jumpParticle.image.getHeight() * settings.TILE_SCALE), 
-            this.landParticle.image.getWidth() * settings.TILE_SCALE, 
-            this.landParticle.image.getHeight() * settings.TILE_SCALE, 
-            null
-
-        );
-        
-        g2.drawImage(
-
-            this.jumpParticle.image, 
-            this.jumpParticle.drawX, 
-            this.jumpParticle.drawY + (settings.TILE_SIZE - this.jumpParticle.image.getHeight() * settings.TILE_SCALE), 
-            this.jumpParticle.image.getWidth() * settings.TILE_SCALE, 
-            this.jumpParticle.image.getHeight() * settings.TILE_SCALE, 
-            null
-
-        );
 
     }
 

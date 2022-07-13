@@ -105,28 +105,10 @@ public class PlayerProjectile extends Sprite {
 
 
 
-    public void applyScroll() {
-
-        long now = System.nanoTime();
-
-        if (now - this.lastUpdate > settings.SCROLL_WAIT) {
-
-            this.lastUpdate = now;
-
-            this.scrollDiff += settings.SCROLL_SPEED;
-
-        }
-
-    }
-
-
-
     public void update() {
 
-        this.applyScroll();
-
         this.drawX = this.x;
-        this.drawY = this.y + this.scrollDiff;
+        this.drawY = this.y;
 
         if (!this.collided) {
 
