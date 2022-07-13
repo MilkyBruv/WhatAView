@@ -9,11 +9,11 @@ public class Settings {
     public final int FPS = 60;
 
     final int baseTileSize = 8;
-    public final int TILE_SCALE = 3;
+    public final int TILE_SCALE = 4;
     public final int TILE_SIZE = baseTileSize * TILE_SCALE; //? 32
 
     public final int TILED_WIDTH = 32;
-    public final int TILED_HEIGHT = 28;
+    public final int TILED_HEIGHT = 20;
     public final int SCREEN_WIDTH = TILED_WIDTH * TILE_SIZE;   //? 256 (base size)
     public final int SCREEN_HEIGHT = TILED_HEIGHT * TILE_SIZE; //? 224 (base size)
 
@@ -25,12 +25,10 @@ public class Settings {
     public final int SHAKE_WAIT = 20000000;
     public final int SHAKE_AMT = 3;
 
-    public int PLAYER_SPEED = 2;
-    public int PLAYER_JUMP = TILE_SCALE * 4;
-    public int PLAYER_DOUBLE_JUMP = TILE_SCALE * 3;
-    public float PLAYER_GRAVITY = 0.65f;
-    public float PLAYER_MAX_FALL_SPEED = 12;
-    public float PLAYER_ACC_X = 12;
-    public float PLAYER_FRICTION = -0.2f;
+    public int PLAYER_SPEED = 5;
+    public int PLAYER_JUMP = 10;
+    public int PLAYER_DOUBLE_JUMP = 10;
+    public float PLAYER_GRAVITY = 1f;
+    public float PLAYER_MAX_FALL_SPEED = 10;
 
 }

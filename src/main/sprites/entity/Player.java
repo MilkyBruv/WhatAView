@@ -23,7 +23,6 @@ public class Player extends Sprite {
     public int jump;
     public int doubleJump;
     public float maxFallSpeed;
-    public float accX;
 
     public int playerNum;
 
@@ -111,7 +110,6 @@ public class Player extends Sprite {
         this.speedX = 0;
         this.speedY = 0f;
         this.speed = settings.PLAYER_SPEED;
-        this.accX = settings.PLAYER_ACC_X;
 
         this.gravity = settings.PLAYER_GRAVITY;
         this.jump = settings.PLAYER_JUMP;
@@ -220,13 +218,12 @@ public class Player extends Sprite {
     public void getKeyboardInputX() {
 
         int pos = this.rect.x;
-        this.accX = 0;
 
         if (gp.keyHandler.leftPressed) {
 
             if (!this.collidedLeft) {
 
-                this.accX = -this.speed;
+                this.speedX = -this.speed;
 
             }
 
@@ -250,7 +247,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.accX = this.speed;
+                this.speedX = this.speed;
 
             }
 
@@ -680,13 +677,12 @@ public class Player extends Sprite {
     public void getContInputX() {
 
         int pos = this.rect.x;
-        this.accX = 0;
 
         if (this.controller.isAxisMoved("left")) {
 
             if (!this.collidedLeft) {
 
-                this.accX = -this.speed;
+                this.speedX = -this.speed;
 
             }
 
@@ -710,7 +706,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.accX = this.speed;
+                this.speedX = this.speed;
 
             }
 
@@ -1251,8 +1247,8 @@ public class Player extends Sprite {
             // Controller input
             if (!this.dead) {
 
-                this.drawX = this.x;
-                this.drawY = this.y;
+                this.drawX = (settings.SCREEN_WIDTH / 2) - (this.width / 2);
+                this.drawY = (settings.SCREEN_HEIGHT / 2) - (this.height / 2);
 
                 if (gp.PLAYMODE.equals("c")) {
 
@@ -1305,23 +1301,7 @@ public class Player extends Sprite {
 
                 }
 
-                // Calculate X physics
-                this.accX += this.speedX * settings.PLAYER_FRICTION;
-                this.speedX += this.accX;
-                double preAdd = this.speedX + 0.5 * this.accX;
-
-                if (preAdd > 6) {
-
-                    preAdd = 6;
-
-                } else if (preAdd < -6) {
-
-                    preAdd = -6;
-
-                }
-
-                this.x += preAdd;
-                System.out.println(preAdd);
+                this.x += this.speedX;
 
                 // Round pos to nearest scaled pixel
                 this.x = settings.TILE_SCALE * (Math.round(this.x / settings.TILE_SCALE));

@@ -138,4 +138,22 @@ public class ControllerManager {
 
     }
 
+
+
+    public Player getPlayer(int num) {
+
+        for (Player player : players) {
+
+            if (player.playerNum == num) {
+
+                return player;
+
+            }
+
+        }
+
+        return null;
+
+    }
+
 }

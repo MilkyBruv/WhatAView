@@ -31,8 +31,8 @@ public class SpriteManager {
     private GamePanel gp;
     private Utils utils = new Utils();
 
-    private int mapWidth = 0;
-    private int mapHeight = 0;
+    public int mapWidth = 0;
+    public int mapHeight = 0;
 
     public SpriteManager(GamePanel gp) {
 
@@ -855,7 +855,7 @@ public class SpriteManager {
 
         try {
 
-            File file = new File("src/res/maps/tiledfiles/map" + currentMapX + ".txt");
+            File file = new File("src/res/maps/tiledfiles/map" + "0-1" + ".txt");
             Scanner reader = new Scanner(file);
             String line = "amongus";
             boolean gotWidth = false;
@@ -894,9 +894,9 @@ public class SpriteManager {
 
         for (int y = 0; y < mapHeight; y++) {
             
-            for (int x = 0; x < settings.TILED_WIDTH; x++) {
+            for (int x = 0; x < mapWidth; x++) {
                 
-                mapPositionData.add(new int[] {x * settings.TILE_SIZE, (y * settings.TILE_SIZE) - ((mapHeight * settings.TILE_SIZE) - settings.SCREEN_HEIGHT)});
+                mapPositionData.add(new int[] {x * settings.TILE_SIZE, y * settings.TILE_SIZE});
 
             }
 

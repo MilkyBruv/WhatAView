@@ -22,5 +22,8 @@ for file in os.listdir(dir):
 
         with open(dir + "\\" + file.replace("tmx", "txt"), "a+") as outf:
 
+            outf.seek(0)
+            outf.truncate()
+            outf.seek(0)
             outf.write(final_str)
 

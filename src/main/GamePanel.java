@@ -133,29 +133,17 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (!menuManager.inMenu && !menuManager.inSubMenu) {
         
-            for (Tile sprite : spriteManager.allTiles) {
+            for (Tile tile : spriteManager.allTiles) {
                 
-                if (!sprite.destroyed) {
+                if (tile.id.equals("66") && !tile.destroyed) {
 
-                    if (sprite.drawX > -settings.TILE_SIZE && sprite.drawX <= settings.SCREEN_WIDTH) {
-                        
-                        if (sprite.drawY > -settings.TILE_SIZE && sprite.drawY <= settings.SCREEN_HEIGHT) {
-                            
-                            if (sprite.id.equals("66") && !sprite.destroyed) {
+                    tile.draw(g2);
 
-                                sprite.draw(g2);
+                }
 
-                            }
+                if (!tile.id.equals("66")) {
 
-                            if (!sprite.id.equals("66")) {
-
-                                sprite.draw(g2);
-
-                            }
-                            
-                        } 
-                        
-                    }
+                    tile.draw(g2);
 
                 }
                 

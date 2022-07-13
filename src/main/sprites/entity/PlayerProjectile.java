@@ -107,8 +107,12 @@ public class PlayerProjectile extends Sprite {
 
     public void update() {
 
-        this.drawX = this.x;
-        this.drawY = this.y;
+        // Round pos to nearest scaled pixel
+        this.x = settings.TILE_SCALE * (Math.round(this.x / settings.TILE_SCALE));
+        this.y = settings.TILE_SCALE * (Math.round(this.y / settings.TILE_SCALE));
+
+        this.drawX = this.x - gp.controllerManager.getPlayer(1).x + gp.controllerManager.getPlayer(1).drawX;
+        this.drawY = this.y - gp.controllerManager.getPlayer(1).y + gp.controllerManager.getPlayer(1).drawY;
 
         if (!this.collided) {
 

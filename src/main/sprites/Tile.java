@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import main.GamePanel;
 import main.Settings;
 import main.sprites.entity.Sprite;
+import main.utils.Utils;
 
 public class Tile extends Sprite {
 
@@ -85,8 +86,8 @@ public class Tile extends Sprite {
 
     public void update() {
 
-        this.drawX = this.x;
-        this.drawY = this.y;
+        this.drawX = this.x - gp.controllerManager.getPlayer(1).x + gp.controllerManager.getPlayer(1).drawX;
+        this.drawY = this.y - gp.controllerManager.getPlayer(1).y + gp.controllerManager.getPlayer(1).drawY;
 
         // If the tile is a platform
         if (this.id.equals("60")) {
@@ -123,7 +124,11 @@ public class Tile extends Sprite {
 
     public void draw(Graphics2D g2) {
         
-        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
+        if (Utils.inRange(this.drawX, 0, settings.SCREEN_WIDTH) && Utils.inRange(this.drawY, 0, settings.SCREEN_HEIGHT)) {
+
+            g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
+
+        }
 
     }
 
