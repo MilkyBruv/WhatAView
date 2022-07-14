@@ -16,7 +16,7 @@ public class PlayerController {
 
         this.gp = gp;
 
-        if (gp.PLAYMODE.equals("c")) {
+        if (this.gp.PLAYMODE.equals("c")) {
 
             this.controller = Controllers.getController(contNum);
 

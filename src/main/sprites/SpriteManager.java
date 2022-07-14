@@ -24,15 +24,26 @@ public class SpriteManager {
     public int currentMapX = 1;
     public int currentMapY = 0;
 
+    public int mapBoundsLeft;
+    public int mapBoundsRight;
+    public int mapBoundsTop;
+    public int mapBoundsBottom;
+
+    public boolean lockedLeft = false;
+    public boolean lockedRight = false;
+    public boolean lockedTop = false;
+    public boolean lockedBottom = false;
+
     private String mapStr = "";
 
-    private Settings settings = new Settings();
+    
     private Spritesheet spritesheet = new Spritesheet();
     private GamePanel gp;
-    private Utils utils = new Utils();
 
     public int mapWidth = 0;
     public int mapHeight = 0;
+    public int totalMapWidth = 0;
+    public int totalMapHeight = 0;
 
     public SpriteManager(GamePanel gp) {
 
@@ -603,22 +614,22 @@ public class SpriteManager {
 
         } if (id.equals("99")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(2, 6), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 6), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("100")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(3, 6), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 6), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("101")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(4, 6), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 6), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("102")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(5, 6), this.gp);
+            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 6), this.gp);
             this.allTiles.add(newTile);
 
         } if (id.equals("103")) {
@@ -878,6 +889,15 @@ public class SpriteManager {
 
             reader.close();
 
+            // Remove 2 for border tiles space
+            totalMapWidth = mapWidth * Settings.TILE_SIZE;
+            totalMapHeight = mapHeight * Settings.TILE_SIZE;
+
+            mapBoundsLeft = 0;
+            mapBoundsRight = totalMapWidth;
+            mapBoundsTop = 0;
+            mapBoundsBottom = totalMapHeight;
+
         } catch (IOException e) {
             
             e.printStackTrace();
@@ -896,7 +916,7 @@ public class SpriteManager {
             
             for (int x = 0; x < mapWidth; x++) {
                 
-                mapPositionData.add(new int[] {x * settings.TILE_SIZE, y * settings.TILE_SIZE});
+                mapPositionData.add(new int[] {x * Settings.TILE_SIZE, y * Settings.TILE_SIZE});
 
             }
 
@@ -939,9 +959,9 @@ public class SpriteManager {
         int ow = other_entity.width;
         int oh = other_entity.height;
 
-        if (utils.inRange(ox, xBounds[0], xBounds[1]) || utils.inRange(ox + ow, xBounds[0], xBounds[1])) {
+        if (Utils.inRange(ox, xBounds[0], xBounds[1]) || Utils.inRange(ox + ow, xBounds[0], xBounds[1])) {
 
-            if (utils.inRange(oy, yBounds[0], yBounds[1]) || utils.inRange(oy + oh, yBounds[0], yBounds[1])) {
+            if (Utils.inRange(oy, yBounds[0], yBounds[1]) || Utils.inRange(oy + oh, yBounds[0], yBounds[1])) {
 
                 return true;
 

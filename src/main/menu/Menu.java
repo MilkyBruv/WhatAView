@@ -19,7 +19,7 @@ public class Menu {
     public BufferedImage image;
 
     public GamePanel gp;
-    private Settings settings = new Settings();
+    
 
     public Menu(GamePanel gp) {
 
@@ -65,12 +65,12 @@ public class Menu {
 
         for (String item : this.items) {
             
-            cx = (settings.SCREEN_WIDTH / 2) - ((item.length() * settings.TILE_SIZE) / 2);
+            cx = (Settings.SCREEN_WIDTH / 2) - ((item.length() * Settings.TILE_SIZE) / 2);
 
             this.itemPositions[count][0] = cx;
             this.itemPositions[count][1] = cy;
 
-            cy += settings.TILE_SIZE * 2;
+            cy += Settings.TILE_SIZE * 2;
 
             count++;
 
@@ -82,17 +82,17 @@ public class Menu {
 
     public void setImage() {
 
-        BufferedImage baseDisplay = new BufferedImage(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
+        BufferedImage baseDisplay = new BufferedImage(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
         BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
 
-        int x = (settings.SCREEN_WIDTH / 2) - (titleTextImage.getWidth() / 2);
-        int y = 5 * settings.TILE_SIZE;
+        int x = (Settings.SCREEN_WIDTH / 2) - (titleTextImage.getWidth() / 2);
+        int y = 5 * Settings.TILE_SIZE;
         
         g.drawImage(titleTextImage, x, y, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
 
-        y += 5 * settings.TILE_SIZE;
+        y += 5 * Settings.TILE_SIZE;
 
         for (int i = 0 ; i < this.itemCount ; i++) {
 
@@ -100,11 +100,11 @@ public class Menu {
 
                 BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
 
-                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + y, textImage.getWidth(), settings.TILE_SIZE, null);
+                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + y, textImage.getWidth(), Settings.TILE_SIZE, null);
 
             }
 
-            y += settings.TILE_SIZE;
+            y += Settings.TILE_SIZE;
 
         }
 
@@ -116,17 +116,17 @@ public class Menu {
 
     public BufferedImage getImage() {
 
-        BufferedImage baseDisplay = new BufferedImage(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
+        BufferedImage baseDisplay = new BufferedImage(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics g = baseDisplay.getGraphics();
 
         BufferedImage titleTextImage = this.gp.spritesheet.getText(this.title);
         
-        int x = (settings.SCREEN_WIDTH / 2) - (titleTextImage.getWidth() / 2);
-        int y = 6 * settings.TILE_SIZE;
+        int x = (Settings.SCREEN_WIDTH / 2) - (titleTextImage.getWidth() / 2);
+        int y = 6 * Settings.TILE_SIZE;
         
         g.drawImage(titleTextImage, x, y, titleTextImage.getWidth(), titleTextImage.getHeight(), null);
 
-        y += 2 * settings.TILE_SIZE;
+        y += 2 * Settings.TILE_SIZE;
 
         for (int i = 0 ; i < this.itemCount ; i++) {
 
@@ -134,11 +134,11 @@ public class Menu {
 
                 BufferedImage textImage = this.gp.spritesheet.getText(this.items[i]);
 
-                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + y, textImage.getWidth(), settings.TILE_SIZE, null);
+                g.drawImage(textImage, this.itemPositions[i][0], this.itemPositions[i][1] + y, textImage.getWidth(), Settings.TILE_SIZE, null);
 
             }
 
-            y += 2 * settings.TILE_SIZE;
+            y += 2 * Settings.TILE_SIZE;
 
         }
 

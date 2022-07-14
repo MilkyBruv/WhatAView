@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import main.camera.Camera;
 import main.controller.ControllerManager;
 import main.menu.MenuManager;
 import main.sprites.Tile;
@@ -18,10 +19,10 @@ import main.sprites.entity.Player;
 public class GamePanel extends JPanel implements Runnable {
 
     // Init classes
-    private Settings settings = new Settings();
+    
     BufferedImage testImage;
-    public String PLAYMODE = "k"; // k = keyboard | c = controller
-    public float scrollWait = settings.SCROLL_WAIT;
+    public String PLAYMODE = "c"; // k = keyboard | c = controller
+    public float scrollWait = Settings.SCROLL_WAIT;
     String line;
     Thread gameThread;
     public KeyHandler keyHandler = new KeyHandler(this);
@@ -30,10 +31,12 @@ public class GamePanel extends JPanel implements Runnable {
     public SpriteManager spriteManager = new SpriteManager(this);
     public ScreenShake screenShake = new ScreenShake(this);
     public MenuManager menuManager = new MenuManager(this);
+    public Camera camera = new Camera(this);
 
     public GamePanel() {
 
-        this.setPreferredSize(new Dimension(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT));
+        this.setPreferredSize(new Dimension(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT));
+        // this.setPreferredSize(new Dimension(1200, 1000));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
@@ -57,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         //* Main game loop
 
-        double drawInterval = 1000000000 / settings.FPS;
+        double drawInterval = 1000000000 / Settings.FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -118,6 +121,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
 
         updateSprites();
+        camera.update();
 
     }
 

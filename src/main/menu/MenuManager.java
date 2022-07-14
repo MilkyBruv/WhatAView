@@ -23,13 +23,13 @@ public class MenuManager {
 
         this.gp = gp;
 
-        this.optionsMenu = new OptionsMenu(gp);
+        this.optionsMenu = new OptionsMenu(this.gp);
 
-        this.startMenu = new StartMenu(gp);
+        this.startMenu = new StartMenu(this.gp);
 
-        this.endMenu = new EndMenu(gp);
+        this.endMenu = new EndMenu(this.gp);
 
-        this.pauseMenu = new PauseMenu(gp);
+        this.pauseMenu = new PauseMenu(this.gp);
 
         this.currentMenu = this.startMenu;
 

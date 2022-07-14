@@ -6,7 +6,7 @@ import main.sprites.entity.Player;
 public class ScreenShake {
 
     GamePanel gp;
-    private Settings settings = new Settings();
+    
 
     private float lastUpdate;
     public int shakeStage;
@@ -37,19 +37,19 @@ public class ScreenShake {
 
             long now = System.nanoTime();
 
-            if (now - this.lastUpdate > settings.SHAKE_WAIT) {
+            if (now - this.lastUpdate > Settings.SHAKE_WAIT) {
                 
                 this.lastUpdate = now;
 
                 for (Player player : this.gp.controllerManager.players) {
         
-                    player.drawX += settings.SHAKE_AMT;
+                    player.drawX += Settings.SHAKE_AMT;
         
                 }
 
                 for (Tile tile : this.gp.spriteManager.allTiles) {
 
-                    tile.drawX += settings.SHAKE_AMT;
+                    tile.drawX += Settings.SHAKE_AMT;
         
                 }
 
@@ -63,19 +63,19 @@ public class ScreenShake {
 
             long now = System.nanoTime();
 
-            if (now - this.lastUpdate > settings.SHAKE_WAIT) {
+            if (now - this.lastUpdate > Settings.SHAKE_WAIT) {
                 
                 this.lastUpdate = now;
 
                 for (Player player : this.gp.controllerManager.players) {
         
-                    player.drawY += settings.SHAKE_AMT;
+                    player.drawY += Settings.SHAKE_AMT;
         
                 }
 
                 for (Tile tile : this.gp.spriteManager.allTiles) {
 
-                    tile.drawY += settings.SHAKE_AMT;
+                    tile.drawY += Settings.SHAKE_AMT;
         
                 }
         
@@ -90,19 +90,19 @@ public class ScreenShake {
 
             long now = System.nanoTime();
 
-            if (now - this.lastUpdate > settings.SHAKE_WAIT) {
+            if (now - this.lastUpdate > Settings.SHAKE_WAIT) {
                 
                 this.lastUpdate = now;
                 
                 for (Player player : this.gp.controllerManager.players) {
         
-                    player.drawX -= settings.SHAKE_AMT;
+                    player.drawX -= Settings.SHAKE_AMT;
         
                 }
 
                 for (Tile tile : this.gp.spriteManager.allTiles) {
 
-                    tile.drawX -= settings.SHAKE_AMT;
+                    tile.drawX -= Settings.SHAKE_AMT;
         
                 }
         
@@ -117,19 +117,19 @@ public class ScreenShake {
 
             long now = System.nanoTime();
 
-            if (now - this.lastUpdate > settings.SHAKE_WAIT) {
+            if (now - this.lastUpdate > Settings.SHAKE_WAIT) {
                 
                 this.lastUpdate = now;
                 
                 for (Player player : this.gp.controllerManager.players) {
         
-                    player.drawY -= settings.SHAKE_AMT;
+                    player.drawY -= Settings.SHAKE_AMT;
         
                 }
 
                 for (Tile tile : this.gp.spriteManager.allTiles) {
 
-                    tile.drawY -= settings.SHAKE_AMT;
+                    tile.drawY -= Settings.SHAKE_AMT;
         
                 }
         

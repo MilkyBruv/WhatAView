@@ -9,8 +9,6 @@ import java.awt.image.BufferedImage;
 public class Enemy extends Sprite {
 
     BufferedImage image;
-
-    Settings settings = new Settings();
     
     public Enemy(GamePanel gp, int x, int y, int width, int height, String id) {
 
@@ -27,7 +25,7 @@ public class Enemy extends Sprite {
 
     public void draw(Graphics2D g2) {
 
-        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
+        g2.drawImage(this.image, this.drawX, this.drawY, Settings.TILE_SIZE, Settings.TILE_SIZE, null);
 
     }
 

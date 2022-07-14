@@ -16,20 +16,22 @@ public class Player extends Sprite {
     
     public BufferedImage image;
     public BufferedImage[] projectileImages;
-    public int speedX;
+    public float speedX;
     public float speedY;
-    public int speed;
+    public float speed;
     public float gravity;
     public int jump;
     public int doubleJump;
     public float maxFallSpeed;
+    public float acc;
+    public float friction;
 
     public int playerNum;
 
     private Spritesheet spritesheet = new Spritesheet();
     private PlayerController controller;
     private GamePanel gp;
-    private Settings settings = new Settings();
+    
 
     public boolean hasShotDown;
 
@@ -103,18 +105,20 @@ public class Player extends Sprite {
         this.y = y;
         this.drawX = this.x;
         this.drawY = this.y;
-        this.width = settings.TILE_SIZE;
-        this.height = settings.TILE_SIZE;
+        this.width = Settings.TILE_SIZE;
+        this.height = Settings.TILE_SIZE;
         this.scrollDiff = 0;
         this.projectileImages = projectileImages;
-        this.speedX = 0;
+        this.speedX = 0f;
         this.speedY = 0f;
-        this.speed = settings.PLAYER_SPEED;
+        this.speed = Settings.PLAYER_SPEED;
+        this.acc = Settings.PLAYER_ACCELERATION;
+        this.friction = Settings.PLAYER_FRICTION;
 
-        this.gravity = settings.PLAYER_GRAVITY;
-        this.jump = settings.PLAYER_JUMP;
-        this.doubleJump = settings.PLAYER_DOUBLE_JUMP;
-        this.maxFallSpeed = settings.PLAYER_MAX_FALL_SPEED;
+        this.gravity = Settings.PLAYER_GRAVITY;
+        this.jump = Settings.PLAYER_JUMP;
+        this.doubleJump = Settings.PLAYER_DOUBLE_JUMP;
+        this.maxFallSpeed = Settings.PLAYER_MAX_FALL_SPEED;
         
         this.dead = false;
 
@@ -156,20 +160,20 @@ public class Player extends Sprite {
         this.rect = new Rectangle();
         this.rect.x = this.x + 1;
         this.rect.y = this.y + 1;
-        this.rect.width = settings.TILE_SIZE - 2;
-        this.rect.height = settings.TILE_SIZE - 2;
+        this.rect.width = Settings.TILE_SIZE - 2;
+        this.rect.height = Settings.TILE_SIZE - 2;
 
         this.platformRect = new Rectangle();
         this.platformRect.x = this.x;
-        this.platformRect.y = this.y + settings.TILE_SIZE;
-        this.platformRect.width = settings.TILE_SIZE;
-        this.platformRect.height = settings.TILE_SIZE / 4;
+        this.platformRect.y = this.y + Settings.TILE_SIZE;
+        this.platformRect.width = Settings.TILE_SIZE;
+        this.platformRect.height = Settings.TILE_SIZE / 4;
 
         this.ropeRect = new Rectangle();
-        this.ropeRect.x = this.x + 3 * settings.TILE_SCALE;
+        this.ropeRect.x = this.x + 3 * Settings.TILE_SCALE;
         this.ropeRect.y = this.y;
-        this.ropeRect.width = 2 * settings.TILE_SCALE;
-        this.ropeRect.height = settings.TILE_SIZE;
+        this.ropeRect.width = 2 * Settings.TILE_SCALE;
+        this.ropeRect.height = Settings.TILE_SIZE;
 
         // #region Images init
 
@@ -218,12 +222,13 @@ public class Player extends Sprite {
     public void getKeyboardInputX() {
 
         int pos = this.rect.x;
+        this.acc = 0;
 
         if (gp.keyHandler.leftPressed) {
 
             if (!this.collidedLeft) {
 
-                this.speedX = -this.speed;
+                this.acc = -this.speed;
 
             }
 
@@ -247,7 +252,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.speedX = this.speed;
+                this.acc = this.speed;
 
             }
 
@@ -677,12 +682,13 @@ public class Player extends Sprite {
     public void getContInputX() {
 
         int pos = this.rect.x;
+        this.acc = 0;
 
         if (this.controller.isAxisMoved("left")) {
 
             if (!this.collidedLeft) {
 
-                this.speedX = -this.speed;
+                this.acc = -this.speed;
 
             }
 
@@ -706,7 +712,7 @@ public class Player extends Sprite {
 
             if (!this.collidedRight) {
 
-                this.speedX = this.speed;
+                this.acc = this.speed;
 
             }
 
@@ -924,20 +930,20 @@ public class Player extends Sprite {
 
                     if (this.speedX < 0) {
 
-                        this.x = tile.x + settings.TILE_SIZE;
+                        this.x = tile.x + Settings.TILE_SIZE;
                         this.collidedLeft = true;
 
                     }
 
                     if (this.speedX > 0) {
 
-                        this.x = tile.x - settings.TILE_SIZE;
+                        this.x = tile.x - Settings.TILE_SIZE;
                         this.collidedRight = true;
 
                     }
 
                     this.rect.x = this.x;
-                    this.rect.width = settings.TILE_SIZE;
+                    this.rect.width = Settings.TILE_SIZE;
 
                 } else {
 
@@ -958,14 +964,14 @@ public class Player extends Sprite {
 
                     if (this.speedY < 0) {
 
-                        this.y = tile.y + settings.TILE_SIZE;
+                        this.y = tile.y + Settings.TILE_SIZE;
                         this.collidedTop = true;
 
                     }
 
                     if (this.speedY > 0) {
 
-                        this.y = tile.y - settings.TILE_SIZE;
+                        this.y = tile.y - Settings.TILE_SIZE;
                         this.collidedBottom = true;
                         this.onGround = true;
                         this.hasShotDown = false;
@@ -978,7 +984,7 @@ public class Player extends Sprite {
 
                     this.speedY = 0;
                     this.rect.y = this.y;
-                    this.rect.height = settings.TILE_SIZE;
+                    this.rect.height = Settings.TILE_SIZE;
 
                 }
 
@@ -997,24 +1003,24 @@ public class Player extends Sprite {
             for (Tile tile : gp.spriteManager.allTiles) {
 
                 this.platformRect.x = this.x;
-                this.platformRect.y = this.y + settings.TILE_SIZE;
-                this.platformRect.width = settings.TILE_SIZE;
-                this.platformRect.height = settings.TILE_SIZE / 4;
+                this.platformRect.y = this.y + Settings.TILE_SIZE;
+                this.platformRect.width = Settings.TILE_SIZE;
+                this.platformRect.height = Settings.TILE_SIZE / 4;
 
                 if (tile.id.equals("60") && this.platformRect.intersects(tile.rect)) {
 
                     if (this.speedY > 0) {
 
-                        this.y = tile.y - settings.TILE_SIZE - 1;
+                        this.y = tile.y - Settings.TILE_SIZE - 1;
                         this.onGround = true;
                         this.hasShotDown = false;
                         this.collidedBottom = true;
 
                         this.speedY = 0;
                         this.platformRect.x = this.x;
-                        this.platformRect.y = this.y + settings.TILE_SIZE;
-                        this.platformRect.width = settings.TILE_SIZE;
-                        this.platformRect.height = settings.TILE_SIZE / 4;
+                        this.platformRect.y = this.y + Settings.TILE_SIZE;
+                        this.platformRect.width = Settings.TILE_SIZE;
+                        this.platformRect.height = Settings.TILE_SIZE / 4;
 
                     }
 
@@ -1092,14 +1098,14 @@ public class Player extends Sprite {
 
         for (Tile tile : gp.spriteManager.allRopeTiles) {
 
-            this.ropeRect.x = this.x + 3 * settings.TILE_SCALE;
+            this.ropeRect.x = this.x + 3 * Settings.TILE_SCALE;
             this.ropeRect.y = this.y;
-            this.ropeRect.width = 2 * settings.TILE_SCALE;
-            this.ropeRect.height = settings.TILE_SIZE;
+            this.ropeRect.width = 2 * Settings.TILE_SCALE;
+            this.ropeRect.height = Settings.TILE_SIZE;
 
             if (tile.id.equals("59") && this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
 
-                this.ropeRectX = tile.rect.x - 3 * settings.TILE_SCALE;
+                this.ropeRectX = tile.rect.x - 3 * Settings.TILE_SCALE;
                 this.ropeCollisions.add(true);
 
             } else {
@@ -1230,6 +1236,32 @@ public class Player extends Sprite {
 
     }
 
+
+
+    public void limitScrolling() {
+
+        if (gp.spriteManager.lockedLeft || gp.spriteManager.lockedRight) {
+
+            this.drawX = this.x;
+
+        } else {
+
+            this.drawX = (Settings.SCREEN_WIDTH / 2) - (this.width / 2);
+
+        }
+
+        if (gp.spriteManager.lockedTop || gp.spriteManager.lockedBottom) {
+
+            this.drawY = this.y;
+
+        } else {
+
+            this.drawY = (Settings.SCREEN_HEIGHT / 2) - (this.height / 2);
+
+        }
+
+    }
+
     
 
     public void kill() {
@@ -1242,13 +1274,12 @@ public class Player extends Sprite {
 
     public void update() {
 
+        this.limitScrolling();
+
         if (!gp.menuManager.inMenu && !gp.menuManager.inSubMenu) {
 
             // Controller input
             if (!this.dead) {
-
-                this.drawX = (settings.SCREEN_WIDTH / 2) - (this.width / 2);
-                this.drawY = (settings.SCREEN_HEIGHT / 2) - (this.height / 2);
 
                 if (gp.PLAYMODE.equals("c")) {
 
@@ -1272,7 +1303,7 @@ public class Player extends Sprite {
                 this.detectRopeCollisions();
                 this.moveOnRope();
                 this.detectRopeJump();
-                this.detectDangerousCollisions();
+                //this.detectDangerousCollisions();
 
             }
 
@@ -1301,28 +1332,43 @@ public class Player extends Sprite {
 
                 }
 
-                this.x += this.speedX;
+                // Calculate X physics
+                this.acc += this.speedX * Settings.PLAYER_FRICTION;
+                this.speedX += this.acc;
+                double preAdd = this.speedX + 0.5 * this.acc;
+
+                if (preAdd > 6) {
+
+                    preAdd = 6;
+
+                } else if (preAdd < -6) {
+
+                    preAdd = -6;
+
+                }
+
+                this.x += preAdd;
 
                 // Round pos to nearest scaled pixel
-                this.x = settings.TILE_SCALE * (Math.round(this.x / settings.TILE_SCALE));
-                this.y = settings.TILE_SCALE * (Math.round(this.y / settings.TILE_SCALE));
+                this.drawX = Settings.TILE_SCALE * (Math.round(this.drawX / Settings.TILE_SCALE));
+                this.y = Settings.TILE_SCALE * (Math.round(this.y / Settings.TILE_SCALE));
 
                 // Collisions
                 // Main rect
                 this.rect.x = this.x + 1;
-                this.rect.width = settings.TILE_SIZE - 2;
+                this.rect.width = Settings.TILE_SIZE - 2;
 
                 this.detectCollisions("x");
 
                 // Main rect
                 this.rect.y = this.y + 1;
-                this.rect.height = settings.TILE_SIZE - 2;
+                this.rect.height = Settings.TILE_SIZE - 2;
 
                 // Platform rect
                 this.platformRect.x = this.x;
-                this.platformRect.y = this.y + settings.TILE_SIZE;
-                this.platformRect.width = settings.TILE_SIZE;
-                this.platformRect.height = settings.TILE_SIZE / 4;
+                this.platformRect.y = this.y + Settings.TILE_SIZE;
+                this.platformRect.width = Settings.TILE_SIZE;
+                this.platformRect.height = Settings.TILE_SIZE / 4;
 
                 this.detectCollisions("y");
                 this.detectPlatformCollisions();
@@ -1365,11 +1411,11 @@ public class Player extends Sprite {
 
     public void draw(Graphics2D g2) {
 
-        g2.drawImage(this.image, this.drawX, this.drawY, settings.TILE_SIZE, settings.TILE_SIZE, null);
+        g2.drawImage(this.image, this.drawX, this.drawY, Settings.TILE_SIZE, Settings.TILE_SIZE, null);
 
         if (gp.controllerManager.playerCount == 2) {
 
-            spritesheet.drawTextNoBG(g2, "P" + this.playerNum, this.drawX - settings.TILE_SIZE / 2, this.drawY - settings.TILE_SIZE, new String[] {"custom", "custom"});
+            spritesheet.drawTextNoBG(g2, "P" + this.playerNum, this.drawX - Settings.TILE_SIZE / 2, this.drawY - Settings.TILE_SIZE, new String[] {"custom", "custom"});
 
         }
 

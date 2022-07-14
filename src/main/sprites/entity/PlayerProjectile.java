@@ -10,7 +10,6 @@ import java.awt.Rectangle;
 
 public class PlayerProjectile extends Sprite {
     
-    private Settings settings = new Settings();
     private GamePanel gp;
 
     public BufferedImage image;
@@ -37,8 +36,8 @@ public class PlayerProjectile extends Sprite {
         this.y = y;
         this.drawX = this.x;
         this.drawY = this.y;
-        this.width = 4 * settings.TILE_SCALE;
-        this.height = 4 * settings.TILE_SCALE;
+        this.width = 4 * Settings.TILE_SCALE;
+        this.height = 4 * Settings.TILE_SCALE;
         this.scrollDiff = 0;
         this.lastUpdate = 0f;
 
@@ -53,30 +52,30 @@ public class PlayerProjectile extends Sprite {
         if (this.dir[0]) {
 
             this.image = this.images[0];
-            this.y -= settings.TILE_SIZE / 2;
-            this.x += settings.TILE_SIZE / 4;
+            this.y -= Settings.TILE_SIZE / 2;
+            this.x += Settings.TILE_SIZE / 4;
 
         } else if (this.dir[1]) {
 
             this.image = this.images[1];
-            this.y += settings.TILE_SIZE;
-            this.x += settings.TILE_SIZE / 4;
+            this.y += Settings.TILE_SIZE;
+            this.x += Settings.TILE_SIZE / 4;
 
         } else if (this.dir[2]) {
 
             this.image = this.images[2];
-            this.y += settings.TILE_SIZE / 4;
+            this.y += Settings.TILE_SIZE / 4;
 
         } else if (this.dir[3]) {
 
             this.image = this.images[3];
-            this.x += settings.TILE_SIZE;
-            this.y += settings.TILE_SIZE / 4;
+            this.x += Settings.TILE_SIZE;
+            this.y += Settings.TILE_SIZE / 4;
 
         }
 
-        this.width = this.image.getWidth() * settings.TILE_SCALE;
-        this.height = this.image.getHeight() * settings.TILE_SCALE;
+        this.width = this.image.getWidth() * Settings.TILE_SCALE;
+        this.height = this.image.getHeight() * Settings.TILE_SCALE;
 
         this.rect = new Rectangle();
         this.rect.x = this.x;
@@ -92,8 +91,8 @@ public class PlayerProjectile extends Sprite {
 
         this.collided = true;
 
-        this.x = -settings.TILE_SIZE;
-        this.y = -settings.TILE_SIZE;
+        this.x = -Settings.TILE_SIZE;
+        this.y = -Settings.TILE_SIZE;
         this.speed = 0;
 
         this.rect.x = this.x;
@@ -108,16 +107,16 @@ public class PlayerProjectile extends Sprite {
     public void update() {
 
         // Round pos to nearest scaled pixel
-        this.x = settings.TILE_SCALE * (Math.round(this.x / settings.TILE_SCALE));
-        this.y = settings.TILE_SCALE * (Math.round(this.y / settings.TILE_SCALE));
+        this.drawX = Settings.TILE_SCALE * (Math.round(this.drawX / Settings.TILE_SCALE));
+        this.y = Settings.TILE_SCALE * (Math.round(this.y / Settings.TILE_SCALE));
 
         this.drawX = this.x - gp.controllerManager.getPlayer(1).x + gp.controllerManager.getPlayer(1).drawX;
         this.drawY = this.y - gp.controllerManager.getPlayer(1).y + gp.controllerManager.getPlayer(1).drawY;
 
         if (!this.collided) {
 
-            this.width = this.image.getWidth() * settings.TILE_SCALE;
-            this.height = this.image.getHeight() * settings.TILE_SCALE;
+            this.width = this.image.getWidth() * Settings.TILE_SCALE;
+            this.height = this.image.getHeight() * Settings.TILE_SCALE;
 
             this.rect = new Rectangle();
             this.rect.x = this.x;
