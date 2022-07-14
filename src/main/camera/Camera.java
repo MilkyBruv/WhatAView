@@ -1,5 +1,7 @@
 package main.camera;
 
+import java.awt.Graphics2D;
+
 import main.GamePanel;
 import main.Settings;
 import main.sprites.entity.Player;
@@ -18,10 +20,10 @@ public class Camera {
         this.gp = gp;
         
         this.player = gp.controllerManager.getPlayer(1);
-        this.x = 0;
-        this.y = 0;
         this.width = Settings.SCREEN_WIDTH;
         this.height = Settings.SCREEN_HEIGHT;
+        this.x = (this.player.x + (this.player.width / 2)) - (this.width / 2);
+        this.y = (this.player.y + (this.player.height / 2)) - (this.height / 2);
 
     }
 
@@ -29,8 +31,8 @@ public class Camera {
 
     public void setPos() {
 
-        this.x = (this.player.drawX + (this.player.width / 2)) - (this.width / 2);
-        this.y = (this.player.drawY + (this.player.height / 2)) - (this.height / 2);
+        this.x = (this.player.x + (this.player.width / 2)) - (this.width / 2);
+        this.y = (this.player.y + (this.player.height / 2)) - (this.height / 2);
 
     }
 
@@ -44,28 +46,28 @@ public class Camera {
 
             gp.spriteManager.lockedLeft = true;
 
-        }  else { gp.spriteManager.lockedLeft = true; }
+        }  else { gp.spriteManager.lockedLeft = false; }
 
 
-        if (this.x + this.width <= gp.spriteManager.mapBoundsRight) {
+        if (this.x + this.width >= gp.spriteManager.mapBoundsRight) {
 
             gp.spriteManager.lockedRight = true;
 
-        }  else { gp.spriteManager.lockedRight = true; }
+        }  else { gp.spriteManager.lockedRight = false; }
 
 
-        if (this.y >= gp.spriteManager.mapBoundsTop) {
+        if (this.y <= gp.spriteManager.mapBoundsTop) {
 
             gp.spriteManager.lockedTop = true;
 
-        }  else { gp.spriteManager.lockedTop = true; }
+        }  else { gp.spriteManager.lockedTop = false; }
 
 
         if (this.y + this.height >= gp.spriteManager.mapBoundsBottom) {
 
             gp.spriteManager.lockedBottom = true;
 
-        }  else { gp.spriteManager.lockedBottom = true; }
+        }  else { gp.spriteManager.lockedBottom = false; }
 
     }
 

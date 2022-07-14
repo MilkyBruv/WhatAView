@@ -10,8 +10,6 @@ import main.sprites.entity.Sprite;
 import main.utils.Utils;
 
 public class Tile extends Sprite {
-
-    private Settings settings = new Settings();
     
     public int x;
     public int y;
@@ -86,9 +84,13 @@ public class Tile extends Sprite {
 
     public void limitScrolling() {
 
-        if (gp.spriteManager.lockedLeft || gp.spriteManager.lockedRight) {
+        if (gp.spriteManager.lockedLeft) {
 
             this.drawX = this.x;
+
+        } else if (gp.spriteManager.lockedRight) {
+
+            this.drawX = this.x - gp.spriteManager.totalMapWidth / 2;
 
         } else {
 
@@ -96,9 +98,13 @@ public class Tile extends Sprite {
 
         }
 
-        if (gp.spriteManager.lockedTop || gp.spriteManager.lockedBottom) {
+        if (gp.spriteManager.lockedTop) {
 
             this.drawY = this.y;
+
+        } else if (gp.spriteManager.lockedBottom) {
+
+            this.drawY = this.y - gp.spriteManager.totalMapHeight / 2;
 
         } else {
 

@@ -1240,9 +1240,13 @@ public class Player extends Sprite {
 
     public void limitScrolling() {
 
-        if (gp.spriteManager.lockedLeft || gp.spriteManager.lockedRight) {
+        if (gp.spriteManager.lockedLeft) {
 
             this.drawX = this.x;
+
+        } else if (gp.spriteManager.lockedRight) {
+
+            this.drawX = this.x - gp.spriteManager.totalMapWidth / 2;
 
         } else {
 
@@ -1250,9 +1254,13 @@ public class Player extends Sprite {
 
         }
 
-        if (gp.spriteManager.lockedTop || gp.spriteManager.lockedBottom) {
+        if (gp.spriteManager.lockedTop) {
 
             this.drawY = this.y;
+
+        } else if (gp.spriteManager.lockedBottom) {
+
+            this.drawY = this.y - gp.spriteManager.totalMapHeight / 2;
 
         } else {
 
@@ -1322,7 +1330,8 @@ public class Player extends Sprite {
                     this.speedY += this.gravity;
                     float preAdd = this.speedY + (this.gravity * 0.5f);
                     if (preAdd > this.maxFallSpeed) { preAdd = this.maxFallSpeed; }
-                    this.y += preAdd;
+                    this.speedY = preAdd;
+                    this.y += this.speedY;
 
                 }
 
@@ -1346,8 +1355,9 @@ public class Player extends Sprite {
                     preAdd = -6;
 
                 }
+                this.speedX = (int) preAdd;
 
-                this.x += preAdd;
+                this.x += speedX;
 
                 // Round pos to nearest scaled pixel
                 this.drawX = Settings.TILE_SCALE * (Math.round(this.drawX / Settings.TILE_SCALE));

@@ -12,8 +12,8 @@ public class Settings {
     public static final int TILE_SCALE = 4;
     public static final int TILE_SIZE = baseTileSize * TILE_SCALE; //? 32
 
-    public static final int TILED_WIDTH = 45;
-    public static final int TILED_HEIGHT = 45;
+    public static final int TILED_WIDTH = 32;
+    public static final int TILED_HEIGHT = 20;
     public static final int SCREEN_WIDTH = TILED_WIDTH * TILE_SIZE;   //? 256 (base size)
     public static final int SCREEN_HEIGHT = TILED_HEIGHT * TILE_SIZE; //? 224 (base size)
 
