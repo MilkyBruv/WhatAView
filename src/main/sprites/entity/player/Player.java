@@ -1,4 +1,4 @@
-package main.sprites.entity;
+package main.sprites.entity.player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import main.GamePanel;
-import main.Settings;
 import main.controller.PlayerController;
+import main.settings.Settings;
 import main.sprites.Tile;
+import main.sprites.entity.Sprite;
 import main.sprites.Spritesheet;
 
 public class Player extends Sprite {

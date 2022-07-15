@@ -1,7 +1,8 @@
 package main;
 
+import main.settings.Settings;
 import main.sprites.Tile;
-import main.sprites.entity.Player;
+import main.sprites.entity.player.Player;
 
 public class ScreenShake {
 

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import main.GamePanel;
-import main.Settings;
-import main.sprites.entity.Player;
+import main.settings.Settings;
 import main.sprites.entity.Sprite;
+import main.sprites.entity.player.Player;
 import main.utils.Utils;
 
 public class SpriteManager {

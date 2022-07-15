@@ -11,10 +11,11 @@ import javax.swing.JPanel;
 import main.camera.Camera;
 import main.controller.ControllerManager;
 import main.menu.MenuManager;
+import main.settings.Settings;
 import main.sprites.Tile;
+import main.sprites.entity.player.Player;
 import main.sprites.SpriteManager;
 import main.sprites.Spritesheet;
-import main.sprites.entity.Player;
 
 public class GamePanel extends JPanel implements Runnable {
 

@@ -1,7 +1,7 @@
 package main.menu;
 
 import main.GamePanel;
-import main.Settings;
+import main.settings.Settings;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

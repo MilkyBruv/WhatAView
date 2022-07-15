@@ -1,7 +1,7 @@
 package main.sprites.entity;
 
 import main.GamePanel;
-import main.Settings;
+import main.settings.Settings;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

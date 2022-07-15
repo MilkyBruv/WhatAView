@@ -9,9 +9,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import java.util.Hashtable;
+import main.settings.Settings;
 
-import main.Settings;
+import java.util.Hashtable;
 
 public class Spritesheet {
     

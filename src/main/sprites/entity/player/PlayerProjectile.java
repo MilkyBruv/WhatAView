@@ -1,10 +1,11 @@
-package main.sprites.entity;
+package main.sprites.entity.player;
 
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
-import main.Settings;
+import main.settings.Settings;
 import main.sprites.Tile;
+import main.sprites.entity.Sprite;
 
 import java.awt.Rectangle;
 

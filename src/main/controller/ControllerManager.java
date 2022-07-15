@@ -10,7 +10,7 @@ import org.lwjgl.input.Controllers;
 
 import main.GamePanel;
 import main.sprites.Spritesheet;
-import main.sprites.entity.Player;
+import main.sprites.entity.player.Player;
 
 public class ControllerManager {
 

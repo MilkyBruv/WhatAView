@@ -1,10 +1,8 @@
 package main.camera;
 
-import java.awt.Graphics2D;
-
 import main.GamePanel;
-import main.Settings;
-import main.sprites.entity.Player;
+import main.settings.Settings;
+import main.sprites.entity.player.Player;
 
 public class Camera {
     

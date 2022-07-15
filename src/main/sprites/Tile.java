@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import main.GamePanel;
-import main.Settings;
+import main.settings.Settings;
 import main.sprites.entity.Sprite;
 import main.utils.Utils;
 

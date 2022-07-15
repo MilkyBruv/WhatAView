@@ -1,4 +1,4 @@
-package main;
+package main.settings;
 
 public class Settings {
 
