@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import main.GamePanel;
 import main.controller.PlayerController;
 import main.settings.Settings;
+import main.sound.SoundPlayer;
 import main.sprites.Tile;
 import main.sprites.entity.Sprite;
 import main.sprites.Spritesheet;
@@ -576,7 +577,7 @@ public class Player extends Sprite {
 
         if (this.controller.isButtonPressed("x") && !this.hasPressedX) {
 
-            if (this.onGround || this.onRope) {
+            if (this.onGround) {
 
                 this.speedY = -this.jump;
                 this.onGround = false;
@@ -584,7 +585,7 @@ public class Player extends Sprite {
 
             }
 
-            else if (!this.hasShotDown && !this.onGround && !this.onRope) { 
+            if (!this.hasShotDown && !this.onGround && !this.onRope) { 
                     
                 this.speedY = -this.doubleJump;
                 this.facingUp = false;
@@ -977,10 +978,6 @@ public class Player extends Sprite {
                         this.onGround = true;
                         this.hasShotDown = false;
 
-                    } else {
-
-                        this.onGround = false;
-
                     }
 
                     this.speedY = 0;
@@ -1001,14 +998,14 @@ public class Player extends Sprite {
 
         if (this.collidesWithPlatforms) {
 
-            for (Tile tile : gp.spriteManager.allTiles) {
+            for (Tile tile : gp.spriteManager.allPlatformTiles) {
 
                 this.platformRect.x = this.x;
                 this.platformRect.y = this.y + Settings.TILE_SIZE;
                 this.platformRect.width = Settings.TILE_SIZE;
                 this.platformRect.height = Settings.TILE_SIZE / 4;
 
-                if (tile.id.equals("60") && this.platformRect.intersects(tile.rect)) {
+                if (this.platformRect.intersects(tile.rect)) {
 
                     if (this.speedY > 0) {
 
@@ -1104,7 +1101,7 @@ public class Player extends Sprite {
             this.ropeRect.width = 2 * Settings.TILE_SCALE;
             this.ropeRect.height = Settings.TILE_SIZE;
 
-            if (tile.id.equals("59") && this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
+            if (this.ropeRect.intersects(tile.rect) && this.collidesWithRopes) {
 
                 this.ropeRectX = tile.rect.x - 3 * Settings.TILE_SCALE;
                 this.ropeCollisions.add(true);
@@ -1223,6 +1220,8 @@ public class Player extends Sprite {
         
         ));
 
+        SoundPlayer.playEffect("shoot1");
+
     }
 
 
@@ -1312,7 +1311,7 @@ public class Player extends Sprite {
                 this.detectRopeCollisions();
                 this.moveOnRope();
                 this.detectRopeJump();
-                //this.detectDangerousCollisions();
+                this.detectDangerousCollisions();
 
             }
 

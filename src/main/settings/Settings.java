@@ -26,10 +26,10 @@ public class Settings {
     public static final int SHAKE_AMT = 3;
 
     public static int PLAYER_SPEED = 2 * TILE_SCALE;
-    public static int PLAYER_JUMP = 12;
-    public static int PLAYER_DOUBLE_JUMP = 10;
-    public static float PLAYER_GRAVITY = 0.775f;
-    public static float PLAYER_MAX_FALL_SPEED = 12;
+    public static int PLAYER_JUMP = 14;
+    public static int PLAYER_DOUBLE_JUMP = 12;
+    public static float PLAYER_GRAVITY = 0.725f;
+    public static float PLAYER_MAX_FALL_SPEED = 14;
     public static float PLAYER_ACCELERATION = 0.005f;
     public static float PLAYER_FRICTION = -0.002f;
 

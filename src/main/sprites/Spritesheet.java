@@ -107,7 +107,7 @@ public class Spritesheet {
         try {
 
             spritesheetImage = ImageIO.read(getClass().getResource("../../res/tiles/tilesetSprites.png"));
-            tilesheetImage = ImageIO.read(getClass().getResource("../../res/tiles/tilesetTiles.png"));
+            tilesheetImage = ImageIO.read(getClass().getResource("../../res/tiles/tilesetTiles2.png"));
             altImage = ImageIO.read(getClass().getResource("../../res/tiles/alt.png"));
 
         } catch (IOException e) {

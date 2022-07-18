@@ -8,6 +8,7 @@ import main.GamePanel;
 import main.settings.Settings;
 import main.sprites.entity.Sprite;
 import main.utils.Utils;
+import main.settings.TileSettings;
 
 public class Tile extends Sprite {
     
@@ -45,7 +46,7 @@ public class Tile extends Sprite {
         this.rect.height = Settings.TILE_SIZE;
 
         // If the tile is a platform
-        if (this.id.equals("60")) {
+        if (this.id.equals(TileSettings.PLATFORM_ID)) {
 
             this.rect.width = Settings.TILE_SIZE;
             this.rect.height = 2 * Settings.TILE_SCALE;
@@ -53,7 +54,7 @@ public class Tile extends Sprite {
         }
 
         // If the tile is a rope
-        if (this.id.equals("59")) {
+        if (this.id.equals(TileSettings.ROPE_ID)) {
 
             this.rect.x = this.x + 3 * Settings.TILE_SCALE;
             this.rect.y = this.y;
@@ -71,8 +72,8 @@ public class Tile extends Sprite {
     public void kill() {
 
         this.destroyed = true;
-        this.x = -(Settings.TILE_SIZE * 2);
-        this.y = -(Settings.TILE_SIZE * 2);
+        this.x = -Settings.TILE_SIZE * 2;
+        this.y = -Settings.TILE_SIZE * 2;
         this.rect.x = this.x;
         this.rect.y = this.y;
         this.rect.width = this.image.getWidth() * Settings.TILE_SCALE;
@@ -121,7 +122,7 @@ public class Tile extends Sprite {
         this.limitScrolling();
 
         // If the tile is a platform
-        if (this.id.equals("60")) {
+        if (this.id.equals(TileSettings.PLATFORM_ID)) {
 
             this.rect.x = this.x;
             this.rect.y = this.y;
@@ -131,7 +132,7 @@ public class Tile extends Sprite {
         }
 
         // If the tile is a rope
-        if (this.id.equals("59")) {
+        if (this.id.equals(TileSettings.ROPE_ID)) {
 
             this.rect.x = this.x + 3 * Settings.TILE_SCALE;
             this.rect.y = this.y;
@@ -140,7 +141,7 @@ public class Tile extends Sprite {
 
         }
 
-        if (!this.id.equals("60") && !this.id.equals("59")) {
+        if (!this.id.equals(TileSettings.PLATFORM_ID) && !this.id.equals(TileSettings.ROPE_ID)) {
 
             this.rect.x = this.x;
             this.rect.y = this.y;

@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Init classes
     
     BufferedImage testImage;
-    public String PLAYMODE = "c"; // k = keyboard | c = controller
+    public String PLAYMODE = "k"; // k = keyboard | c = controller
     public float scrollWait = Settings.SCROLL_WAIT;
     String line;
     Thread gameThread;
@@ -101,6 +101,18 @@ public class GamePanel extends JPanel implements Runnable {
 
             }
 
+            for (Tile tile : spriteManager.allPlatformTiles) {
+
+                tile.update();
+                
+            }
+
+            for (Tile tile : spriteManager.allRopeTiles) {
+
+                tile.update();
+                
+            }
+
         }
 
         for (Player player : controllerManager.players) {
@@ -151,6 +163,18 @@ public class GamePanel extends JPanel implements Runnable {
                     tile.draw(g2);
 
                 }
+                
+            }
+
+            for (Tile tile : spriteManager.allPlatformTiles) {
+
+                tile.draw(g2);
+                
+            }
+
+            for (Tile tile : spriteManager.allRopeTiles) {
+
+                tile.draw(g2);
                 
             }
             

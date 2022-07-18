@@ -16,6 +16,7 @@ public class SpriteManager {
     
     public List<Tile> allTiles = new ArrayList<Tile>() {};
     public List<Tile> allRopeTiles = new ArrayList<Tile>() {};
+    public List<Tile> allPlatformTiles = new ArrayList<Tile>() {};
     public List<Tile> allDangerousTiles = new ArrayList<Tile>() {};
 
     public List<int[]> mapPositionData = new ArrayList<int[]>() {};
@@ -442,13 +443,13 @@ public class SpriteManager {
 
         } if (id.equals("71")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(6, 4), this.gp);
-            this.allTiles.add(newTile);
+            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(6, 4), this.gp);
+            this.allRopeTiles.add(newTile);
 
         } if (id.equals("72")) {
 
-            Tile newTile = new Tile(x, y, id, true, false, spritesheet.getSubTile(7, 4), this.gp);
-            this.allTiles.add(newTile);
+            Tile newTile = new Tile(x, y, id, false, false, spritesheet.getSubTile(7, 4), this.gp);
+            this.allPlatformTiles.add(newTile);
 
         } if (id.equals("73")) {
 
