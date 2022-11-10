@@ -1220,7 +1220,10 @@ public class Player extends Sprite {
         
         ));
 
-        SoundPlayer.playEffect("shoot1");
+        int min = 1;
+        int max = 2;
+        int num = (int) Math.floor(Math.random() * (min - max + 1) + min);
+        SoundPlayer.playEffect("shoot" + num);
 
     }
 

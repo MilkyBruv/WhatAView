@@ -19,9 +19,6 @@ public class Spritesheet {
     public BufferedImage tilesheetImage;
     public BufferedImage altImage;
     public BufferedImage image;
-
-    
-
     public Hashtable<String, String> charsDict = new Hashtable<String, String>();
 
     public Spritesheet() {

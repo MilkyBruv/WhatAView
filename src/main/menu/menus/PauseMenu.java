@@ -46,7 +46,7 @@ public class PauseMenu extends Menu {
     @Override
     public void item2() {
 
-        System.out.println("TODO: Restart level");
+        //
 
     }
 
